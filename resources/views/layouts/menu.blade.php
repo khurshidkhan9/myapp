@@ -1,6 +1,6 @@
 <!-- need to remove -->
 <li class="nav-item">
-    <a href="{{ route('home') }}" class="nav-link active">
+    <a href="{{ route('admin') }}" class="nav-link active">
         <i class="nav-icon fas fa-home"></i>
         <p>Home</p>
     </a>
@@ -15,13 +15,13 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <router-link to="/Users" class="nav-link">
+            <router-link to="/users" class="nav-link">
                 <i class="fas fa-users nav-icon"></i>
                 <p>Show all users</p>
             </router-link>
         </li>
         <li class="nav-item">
-            <router-link to="/profile" class="nav-link">
+            <router-link to="/users/create" class="nav-link">
                 <i class="fas fa-user-plus nav-icon"></i>
                 <p>Create New user</p>
             </router-link>

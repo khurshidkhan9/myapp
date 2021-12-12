@@ -10,9 +10,9 @@
                   <img class="profile-user-img img-fluid img-circle" src="" alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                <h3 class="profile-username text-center" >{{ profile.name }}</h3>
 
-                <p class="text-muted text-center">Software Engineer</p>
+                <p class="text-muted text-center">{{ profile.email }}</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
@@ -145,8 +145,15 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+         data() {
+    return {
+      profile: []
+    };
+  },
+  created() {
+      axios.get("admin/profile").then(response => {
+          this.profile = response.data;
+      });
+  },
     }
 </script>

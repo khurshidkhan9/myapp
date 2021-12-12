@@ -14,7 +14,9 @@ Vue.use(VueRouter)
 
 let routes = [
     { path: '/', component: require('./components/Dashboard.vue').default },
-    { path: '/Users', component: require('./components/users/ShowUsers.vue').default },
+    { path: '/users', component: require('./components/users/ShowUsers.vue').default },
+    { path: '/users/edit', component: require('./components/users/EditUser.vue').default },
+    { path: '/users/create', component: require('./components/users/CreateUser.vue').default },
     { path: '/profile', component: require('./components/Profile.vue').default }
   ]
 
