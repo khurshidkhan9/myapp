@@ -36,7 +36,27 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        if ($request->file('file')) {
+            $imagePath = $request->file('file');
+            $imageName = $imagePath->getClientOriginalName();
+            $path = $request->file('file')->storeAs('uploads/', $imageName, 'public');
+            $this->img_name = $imageName;
+            $this->img_path = '/public/' . $path;
+            if (User::create($request->all() + ['avatar' => $this->img_name, 'img_path' => $this->img_path])) {
+                return true;
+            }
+
+        } else {
+            if(User::create($request->all())){
+                return true;
+            }
+        }
     }
 
     /**
@@ -47,7 +67,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+       
+    
     }
 
     /**

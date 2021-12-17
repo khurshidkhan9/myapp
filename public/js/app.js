@@ -5768,37 +5768,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5873,7 +5842,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      user: []
+    };
+  },
+  methods: {
+    AddNewUser: function AddNewUser() {
+      var formData = new FormData(document.getElementById("myForm"));
+      var instance = this;
+      axios.post("admin/users", formData).then(function (response) {
+        console.log(formData);
+        instance.$router.push("/users");
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -42578,15 +42585,13 @@ var render = function () {
             ]),
             _vm._v(" "),
             _vm._m(1),
-            _vm._v(" "),
-            _vm._m(2),
           ]),
         ]),
         _vm._v(" "),
-        _vm._m(3),
+        _vm._m(2),
       ]),
       _vm._v(" "),
-      _vm._m(4),
+      _vm._m(3),
     ]),
   ])
 }
@@ -42600,30 +42605,6 @@ var staticRenderFns = [
         staticClass: "profile-user-img img-fluid img-circle",
         attrs: { src: "", alt: "User profile picture" },
       }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "list-group list-group-unbordered mb-3" }, [
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("b", [_vm._v("Followers")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "float-right" }, [_vm._v("1,322")]),
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("b", [_vm._v("Following")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "float-right" }, [_vm._v("543")]),
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("b", [_vm._v("Friends")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "float-right" }, [_vm._v("13,287")]),
-      ]),
     ])
   },
   function () {
@@ -42647,19 +42628,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("strong", [
-          _c("i", { staticClass: "fas fa-book mr-1" }),
-          _vm._v(" Education"),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-muted" }, [
-          _vm._v(
-            "\n              B.S. in Computer Science from the University of Tennessee at Knoxville\n            "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("strong", [
           _c("i", { staticClass: "fas fa-map-marker-alt mr-1" }),
           _vm._v(" Location"),
         ]),
@@ -42670,33 +42638,22 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("strong", [
           _c("i", { staticClass: "fas fa-pencil-alt mr-1" }),
-          _vm._v(" Skills"),
+          _vm._v(" Position"),
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "text-muted" }, [
-          _c("span", { staticClass: "tag tag-danger" }, [_vm._v("UI Design")]),
+          _c("span", { staticClass: "tag tag-danger" }, [
+            _vm._v("Team Member"),
+          ]),
           _vm._v(" "),
-          _c("span", { staticClass: "tag tag-success" }, [_vm._v("Coding")]),
+          _c("span", { staticClass: "tag tag-success" }, [
+            _vm._v("Subscriber"),
+          ]),
           _vm._v(" "),
-          _c("span", { staticClass: "tag tag-info" }, [_vm._v("Javascript")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "tag tag-warning" }, [_vm._v("PHP")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "tag tag-primary" }, [_vm._v("Node.js")]),
+          _c("span", { staticClass: "tag tag-success" }, [_vm._v("Visitor")]),
         ]),
         _vm._v(" "),
         _c("hr"),
-        _vm._v(" "),
-        _c("strong", [
-          _c("i", { staticClass: "far fa-file-alt mr-1" }),
-          _vm._v(" Notes"),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-muted" }, [
-          _vm._v(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque."
-          ),
-        ]),
       ]),
     ])
   },
@@ -42777,9 +42734,9 @@ var staticRenderFns = [
                       "label",
                       {
                         staticClass: "col-sm-2 col-form-label",
-                        attrs: { for: "inputName2" },
+                        attrs: { for: "inputposition" },
                       },
-                      [_vm._v("Name")]
+                      [_vm._v("Position")]
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-sm-10" }, [
@@ -42787,8 +42744,8 @@ var staticRenderFns = [
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
-                          id: "inputName2",
-                          placeholder: "Name",
+                          id: "inputposition",
+                          placeholder: "Position",
                         },
                       }),
                     ]),
@@ -42799,30 +42756,9 @@ var staticRenderFns = [
                       "label",
                       {
                         staticClass: "col-sm-2 col-form-label",
-                        attrs: { for: "inputExperience" },
+                        attrs: { for: "inputaddress" },
                       },
-                      [_vm._v("Experience")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10" }, [
-                      _c("textarea", {
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "inputExperience",
-                          placeholder: "Experience",
-                        },
-                      }),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group row" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-sm-2 col-form-label",
-                        attrs: { for: "inputSkills" },
-                      },
-                      [_vm._v("Skills")]
+                      [_vm._v("Address")]
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-sm-10" }, [
@@ -42830,8 +42766,8 @@ var staticRenderFns = [
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
-                          id: "inputSkills",
-                          placeholder: "Skills",
+                          id: "inputaddress",
+                          placeholder: "Address",
                         },
                       }),
                     ]),
@@ -42894,107 +42830,199 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "col-md-6" }, [
+    _c("div", { staticClass: "card card-primary" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: { name: "myform", id: "myForm" },
+          on: {
+            submit: function ($event) {
+              $event.preventDefault()
+              return _vm.AddNewUser.apply(null, arguments)
+            },
+          },
+        },
+        [_vm._m(1), _vm._v(" "), _vm._m(2)]
+      ),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "card card-primary" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c("h3", { staticClass: "card-title" }, [_vm._v("Create New User")]),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Create New User")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Name" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "name",
+            type: "text",
+            id: "Name",
+            placeholder: "Name",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Email" } }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "email",
+            type: "email",
+            id: "Email",
+            placeholder: "Enter email",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Position" } }, [_vm._v("Position")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "position",
+            type: "text",
+            id: "Position",
+            placeholder: "Enter Position",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Phone" } }, [_vm._v("Phone Number")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "phone",
+            type: "number",
+            id: "Phone",
+            placeholder: "Enter Phone",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Address" } }, [_vm._v("Address")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "address",
+            type: "text",
+            id: "Address",
+            placeholder: "Enter Address",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+          _vm._v("Password"),
         ]),
         _vm._v(" "),
-        _c("form", [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                _vm._v("Email address"),
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "email",
-                  id: "exampleInputEmail1",
-                  placeholder: "Enter email",
-                },
-              }),
-            ]),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "password",
+            type: "password",
+            id: "exampleInputPassword1",
+            placeholder: "Password",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "exampleInputFile" } }, [
+          _vm._v("File input"),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-group" }, [
+          _c("div", { staticClass: "custom-file" }, [
+            _c("input", {
+              staticClass: "custom-file-input",
+              attrs: { name: "file", type: "file", id: "exampleInputFile" },
+            }),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                _vm._v("Password"),
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "password",
-                  id: "exampleInputPassword1",
-                  placeholder: "Password",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputFile" } }, [
-                _vm._v("File input"),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group" }, [
-                _c("div", { staticClass: "custom-file" }, [
-                  _c("input", {
-                    staticClass: "custom-file-input",
-                    attrs: { type: "file", id: "exampleInputFile" },
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "custom-file-label",
-                      attrs: { for: "exampleInputFile" },
-                    },
-                    [_vm._v("Choose file")]
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group-append" }, [
-                  _c("span", { staticClass: "input-group-text" }, [
-                    _vm._v("Upload"),
-                  ]),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-check" }, [
-              _c("input", {
-                staticClass: "form-check-input",
-                attrs: { type: "checkbox", id: "exampleCheck1" },
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "form-check-label",
-                  attrs: { for: "exampleCheck1" },
-                },
-                [_vm._v("Check me out")]
-              ),
-            ]),
+            _c(
+              "label",
+              {
+                staticClass: "custom-file-label",
+                attrs: { for: "exampleInputFile" },
+              },
+              [_vm._v("Choose file")]
+            ),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Submit")]
-            ),
+          _c("div", { staticClass: "input-group-append" }, [
+            _c("span", { staticClass: "input-group-text" }, [_vm._v("Upload")]),
           ]),
         ]),
       ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            name: "is_admin",
+            type: "checkbox",
+            value: "1",
+            id: "Admin",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "Admin" } },
+          [_vm._v("Is Admin")]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: { name: "in_team", type: "checkbox", value: "1", id: "Team" },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "Team" } },
+          [_vm._v("In Team")]
+        ),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { name: "submit", type: "submit" },
+        },
+        [_vm._v("Submit")]
+      ),
     ])
   },
 ]
