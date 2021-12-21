@@ -5941,7 +5941,125 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "UpdateUser",
+  props: ["id"],
+  data: function data() {
+    return {
+      user: {}
+    };
+  },
+  methods: {
+    getUser: function getUser() {
+      var instance = this;
+      axios.get("admin/users/" + instance.$route.params.id + "/edit").then(function (response) {
+        instance.user = response.data;
+        console.log("Success");
+      })["catch"](function (error) {
+        console.log("Error");
+      });
+    },
+    UpdateUser: function UpdateUser() {
+      var formData = new FormData(document.getElementById("myForm"));
+      var instance = this;
+      axios.post("admin/users/" + instance.$route.params.id, formData).then(function (response) {
+        console.log(formData);
+        instance.$router.push("/users");
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getUser();
+  }
+});
 
 /***/ }),
 
@@ -5956,6 +6074,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6087,11 +6231,15 @@ var routes = [{
   path: '/users',
   component: (__webpack_require__(/*! ./components/users/ShowUsers.vue */ "./resources/js/components/users/ShowUsers.vue")["default"])
 }, {
-  path: '/users/edit',
-  component: (__webpack_require__(/*! ./components/users/EditUser.vue */ "./resources/js/components/users/EditUser.vue")["default"])
-}, {
   path: '/users/create',
   component: (__webpack_require__(/*! ./components/users/CreateUser.vue */ "./resources/js/components/users/CreateUser.vue")["default"])
+}, {
+  path: '/users/:id',
+  component: (__webpack_require__(/*! ./components/users/CreateUser.vue */ "./resources/js/components/users/CreateUser.vue")["default"])
+}, {
+  name: 'UpdateUser',
+  path: '/users/:id',
+  component: (__webpack_require__(/*! ./components/users/EditUser.vue */ "./resources/js/components/users/EditUser.vue")["default"])
 }, {
   path: '/profile',
   component: (__webpack_require__(/*! ./components/Profile.vue */ "./resources/js/components/Profile.vue")["default"])
@@ -42837,7 +42985,8 @@ var render = function () {
       _c(
         "form",
         {
-          attrs: { name: "myform", id: "myForm" },
+          staticClass: "myform",
+          attrs: { id: "myForm", enctype: "multipart/form-data" },
           on: {
             submit: function ($event) {
               $event.preventDefault()
@@ -43048,107 +43197,210 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "col-md-6" }, [
+    _c("div", { staticClass: "card card-primary" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "myform",
+          attrs: { id: "myForm", enctype: "multipart/form-data" },
+          on: {
+            submit: function ($event) {
+              $event.preventDefault()
+              return _vm.UpdateUser.apply(null, arguments)
+            },
+          },
+        },
+        [_vm._m(1), _vm._v(" "), _vm._m(2)]
+      ),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "card card-primary" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c("h3", { staticClass: "card-title" }, [_vm._v("Edit User")]),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Edit User")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Name" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "name",
+            type: "text",
+            id: "Name",
+            placeholder: "Name",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Email" } }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "email",
+            type: "email",
+            id: "Email",
+            placeholder: "Enter email",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Position" } }, [_vm._v("Position")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "position",
+            type: "text",
+            id: "Position",
+            placeholder: "Enter Position",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Phone" } }, [_vm._v("Phone Number")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "phone",
+            type: "number",
+            id: "Phone",
+            placeholder: "Enter Phone",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "Address" } }, [_vm._v("Address")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "address",
+            type: "text",
+            id: "Address",
+            placeholder: "Enter Address",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+          _vm._v("Password"),
         ]),
         _vm._v(" "),
-        _c("form", [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                _vm._v("Email address"),
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "email",
-                  id: "exampleInputEmail1",
-                  placeholder: "Enter email",
-                },
-              }),
-            ]),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            name: "password",
+            type: "password",
+            id: "exampleInputPassword1",
+            placeholder: "Password",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "exampleInputFile" } }, [
+          _vm._v("File input"),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-group" }, [
+          _c("div", { staticClass: "custom-file" }, [
+            _c("input", {
+              staticClass: "custom-file-input",
+              attrs: { name: "file", type: "file", id: "exampleInputFile" },
+            }),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                _vm._v("Password"),
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "password",
-                  id: "exampleInputPassword1",
-                  placeholder: "Password",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "exampleInputFile" } }, [
-                _vm._v("File input"),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group" }, [
-                _c("div", { staticClass: "custom-file" }, [
-                  _c("input", {
-                    staticClass: "custom-file-input",
-                    attrs: { type: "file", id: "exampleInputFile" },
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "custom-file-label",
-                      attrs: { for: "exampleInputFile" },
-                    },
-                    [_vm._v("Choose file")]
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group-append" }, [
-                  _c("span", { staticClass: "input-group-text" }, [
-                    _vm._v("Upload"),
-                  ]),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-check" }, [
-              _c("input", {
-                staticClass: "form-check-input",
-                attrs: { type: "checkbox", id: "exampleCheck1" },
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "form-check-label",
-                  attrs: { for: "exampleCheck1" },
-                },
-                [_vm._v("Check me out")]
-              ),
-            ]),
+            _c(
+              "label",
+              {
+                staticClass: "custom-file-label",
+                attrs: { for: "exampleInputFile" },
+              },
+              [_vm._v("Choose file")]
+            ),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Submit")]
-            ),
+          _c("div", { staticClass: "input-group-append" }, [
+            _c("span", { staticClass: "input-group-text" }, [_vm._v("Upload")]),
           ]),
         ]),
       ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          attrs: {
+            type: "datetime-local",
+            name: "email_verified_at",
+            id: "Date",
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            name: "is_admin",
+            type: "checkbox",
+            value: "1",
+            id: "Admin",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "Admin" } },
+          [_vm._v("Is Admin")]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: { name: "in_team", type: "checkbox", value: "1", id: "Team" },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "Team" } },
+          [_vm._v("In Team")]
+        ),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { name: "submit", type: "submit" },
+        },
+        [_vm._v("\n          Submit\n        ")]
+      ),
     ])
   },
 ]
@@ -43192,6 +43444,12 @@ var render = function () {
                   _c("td", [_vm._v(_vm._s(user.id))]),
                   _vm._v(" "),
                   _c("td", [
+                    _c("img", {
+                      attrs: { src: user.img_path, width: "100px", alt: "" },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
                     _c("a", [_vm._v(" " + _vm._s(user.name) + " ")]),
                     _vm._v(" "),
                     _c("br"),
@@ -43201,19 +43459,61 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(user.email))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("td", [_vm._v(_vm._s(user.phone))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.address))]),
+                  _vm._v(" "),
+                  user.email_verified_at
+                    ? _c("td", { staticClass: "project-state" }, [
+                        _c("span", { staticClass: "badge badge-success" }, [
+                          _vm._v("verified"),
+                        ]),
+                      ])
+                    : _c("td", { staticClass: "project-state" }, [
+                        _c("span", { staticClass: "badge badge-danger" }, [
+                          _vm._v("not verified"),
+                        ]),
+                      ]),
+                  _vm._v(" "),
+                  user.is_admin
+                    ? _c("td", { staticClass: "project-state" }, [
+                        _c("span", { staticClass: "badge badge-success" }, [
+                          _vm._v("admin"),
+                        ]),
+                      ])
+                    : _c("td", { staticClass: "project-state" }, [
+                        _c("span", { staticClass: "badge badge-danger" }, [
+                          _vm._v("visitor"),
+                        ]),
+                      ]),
+                  _vm._v(" "),
+                  user.in_team
+                    ? _c("td", { staticClass: "project-state" }, [
+                        _c("span", { staticClass: "badge badge-success" }, [
+                          _vm._v("In Team"),
+                        ]),
+                      ])
+                    : _c("td", { staticClass: "project-state" }, [
+                        _c("span", { staticClass: "badge badge-danger" }, [
+                          _vm._v("Member"),
+                        ]),
+                      ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.position))]),
                   _vm._v(" "),
                   _c(
                     "td",
                     { staticClass: "project-actions text-right" },
                     [
-                      _vm._m(3, true),
+                      _vm._m(2, true),
                       _vm._v(" "),
                       _c(
                         "router-link",
                         {
                           staticClass: "btn btn-info btn-sm",
-                          attrs: { to: "/Users/edit" },
+                          attrs: {
+                            to: { name: "UpdateUser", params: { id: user.id } },
+                          },
                         },
                         [
                           _c("i", { staticClass: "fas fa-pencil-alt" }),
@@ -43294,24 +43594,26 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { staticStyle: { width: "1%" } }, [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", { staticStyle: { width: "20%" } }, [_vm._v("Name")]),
+        _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Image")]),
         _vm._v(" "),
-        _c("th", { staticStyle: { width: "30%" } }, [_vm._v("Email")]),
+        _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", { staticClass: "text-center", staticStyle: { width: "8%" } }, [
-          _vm._v("Status"),
-        ]),
+        _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Phone")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Address")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Verified")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Member")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Position")]),
         _vm._v(" "),
         _c("th", { staticStyle: { width: "20%" } }),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "project-state" }, [
-      _c("span", { staticClass: "badge badge-success" }, [_vm._v("Success")]),
     ])
   },
   function () {

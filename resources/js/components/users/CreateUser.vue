@@ -7,7 +7,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form name="myform" @submit.prevent="AddNewUser" id="myForm">
+              <form class="myform" @submit.prevent="AddNewUser" id="myForm" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="Name">Name</label>

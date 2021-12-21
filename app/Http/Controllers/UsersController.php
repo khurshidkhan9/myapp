@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-Use App\Models\User;
 
 class UsersController extends Controller
 {
@@ -15,7 +15,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all()->toArray();
-        return array_reverse($users);   
+        return array_reverse($users);
     }
 
     /**
@@ -45,15 +45,15 @@ class UsersController extends Controller
         if ($request->file('file')) {
             $imagePath = $request->file('file');
             $imageName = $imagePath->getClientOriginalName();
-            $path = $request->file('file')->storeAs('uploads/', $imageName, 'public');
+            $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
             $this->img_name = $imageName;
-            $this->img_path = '/public/' . $path;
+            $this->img_path = 'public/' . $path;
             if (User::create($request->all() + ['avatar' => $this->img_name, 'img_path' => $this->img_path])) {
                 return true;
             }
 
         } else {
-            if(User::create($request->all())){
+            if (User::create($request->all())) {
                 return true;
             }
         }
@@ -67,8 +67,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-       
-    
+        $user = User::find($id);
+        return response()->json($user);
+
     }
 
     /**
@@ -79,7 +80,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return response()->json($user);
     }
 
     /**
@@ -89,9 +91,43 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateuser(Request $request, $id)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->file('file')) {
+            $imagePath = $request->file('file');
+            $imageName = $imagePath->getClientOriginalName();
+
+            $user = User::find($id);
+            $path = "./" . $user->img_path;
+
+            if (empty($user->img_path)) {
+                $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
+            } else {
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+
+                $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
+            }
+
+        }
+
+        $this->img_name = $imageName;
+        $this->img_path = 'public/' . $path;
+
+        if (user::where('id', $id)->update($request->only(['name', 'email', 'email_verified_at', 'is_admin', 'in_team', 'position', 'password', 'avatar', 'img_path', 'phone', 'address']) + ['avatar' => $this->img_name, 'img_path' => $this->img_path])) {
+
+            return "User has been Updated successfully!";
+        } else {
+            return "User Update failed to create!";
+        }
     }
 
     /**

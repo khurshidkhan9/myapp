@@ -25,5 +25,5 @@ Route::get('admin/profile', [App\Http\Controllers\HomeController::class, 'profil
 
 Route::prefix('/admin')->group(function () {
     Route::resource('users', UsersController::class);
-    
+    Route::post('users/{id}', [UsersController::class, 'updateuser']);
 });
