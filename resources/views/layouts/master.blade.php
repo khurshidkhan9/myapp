@@ -131,7 +131,7 @@
                                                     @csrf
                                                 </form>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('Profile') }}">{{ __('Profile') }}</a>
+                                                    href="{{ route('profile') }}">{{ __('Profile') }}</a>
                                                     @if (Auth::user()->is_admin == 1)
                                                     <a class="dropdown-item"
                                                     href="{{ route('admin.home') }}">{{ __('Admin Panel') }}</a>
@@ -148,15 +148,7 @@
             </div>
         </div>
     </header>
-    <!-- ***** Header Area End ***** -->
-    @if (session()->has('error'))
-        <div class="container">
-
-            <div class="alert alert-danger">
-                {{ session()->get('error') }}
-            </div>
-        </div>
-    @endif
+  
 
     @yield('content')
 

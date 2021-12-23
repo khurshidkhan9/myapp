@@ -38,7 +38,7 @@
               <th>Status</th>
               <th>Member</th>
               <th>Position</th>
-              <th style="width: 20%"></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

@@ -6027,12 +6027,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "UpdateUser",
   props: ["id"],
   data: function data() {
     return {
-      user: {}
+      user: []
     };
   },
   methods: {
@@ -43213,7 +43219,113 @@ var render = function () {
             },
           },
         },
-        [_vm._m(1), _vm._v(" "), _vm._m(2)]
+        [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "Name" } }, [_vm._v("Name")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  name: "name",
+                  type: "text",
+                  id: "Name",
+                  placeholder: "Name",
+                },
+                domProps: { value: _vm.user.name },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "Email" } }, [_vm._v("Email")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  name: "email",
+                  type: "email",
+                  id: "Email",
+                  placeholder: "Enter email",
+                },
+                domProps: { value: _vm.user.email },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "Position" } }, [_vm._v("Position")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  name: "position",
+                  type: "text",
+                  id: "Position",
+                  placeholder: "Enter Position",
+                },
+                domProps: { value: _vm.user.position },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "Phone" } }, [
+                _vm._v("Phone Number"),
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  name: "phone",
+                  type: "number",
+                  id: "Phone",
+                  placeholder: "Enter Phone",
+                },
+                domProps: { value: _vm.user.phone },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "Address" } }, [_vm._v("Address")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  name: "address",
+                  type: "text",
+                  id: "Address",
+                  placeholder: "Enter Address",
+                },
+                domProps: { value: _vm.user.address },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                _vm._v("Password"),
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  name: "password",
+                  type: "password",
+                  id: "exampleInputPassword1",
+                  placeholder: "Password",
+                },
+                domProps: { value: _vm.user.password },
+              }),
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _vm._m(4),
+          ]),
+          _vm._v(" "),
+          _vm._m(5),
+        ]
       ),
     ]),
   ])
@@ -43231,160 +43343,77 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Name" } }, [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "name",
-            type: "text",
-            id: "Name",
-            placeholder: "Name",
-          },
-        }),
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "exampleInputFile" } }, [
+        _vm._v("File input"),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Email" } }, [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "email",
-            type: "email",
-            id: "Email",
-            placeholder: "Enter email",
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Position" } }, [_vm._v("Position")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "position",
-            type: "text",
-            id: "Position",
-            placeholder: "Enter Position",
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Phone" } }, [_vm._v("Phone Number")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "phone",
-            type: "number",
-            id: "Phone",
-            placeholder: "Enter Phone",
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "Address" } }, [_vm._v("Address")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "address",
-            type: "text",
-            id: "Address",
-            placeholder: "Enter Address",
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-          _vm._v("Password"),
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "password",
-            type: "password",
-            id: "exampleInputPassword1",
-            placeholder: "Password",
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleInputFile" } }, [
-          _vm._v("File input"),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "input-group" }, [
-          _c("div", { staticClass: "custom-file" }, [
-            _c("input", {
-              staticClass: "custom-file-input",
-              attrs: { name: "file", type: "file", id: "exampleInputFile" },
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "custom-file-label",
-                attrs: { for: "exampleInputFile" },
-              },
-              [_vm._v("Choose file")]
-            ),
-          ]),
+      _c("div", { staticClass: "input-group" }, [
+        _c("div", { staticClass: "custom-file" }, [
+          _c("input", {
+            staticClass: "custom-file-input",
+            attrs: { name: "file", type: "file", id: "exampleInputFile" },
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "input-group-append" }, [
-            _c("span", { staticClass: "input-group-text" }, [_vm._v("Upload")]),
-          ]),
+          _c(
+            "label",
+            {
+              staticClass: "custom-file-label",
+              attrs: { for: "exampleInputFile" },
+            },
+            [_vm._v("Choose file")]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-group-append" }, [
+          _c("span", { staticClass: "input-group-text" }, [_vm._v("Upload")]),
         ]),
       ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        attrs: {
+          type: "datetime-local",
+          name: "email_verified_at",
+          id: "Date",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-check" }, [
+      _c("input", {
+        staticClass: "form-check-input",
+        attrs: { name: "is_admin", type: "checkbox", value: "1", id: "Admin" },
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          attrs: {
-            type: "datetime-local",
-            name: "email_verified_at",
-            id: "Date",
-          },
-        }),
-      ]),
+      _c(
+        "label",
+        { staticClass: "form-check-label", attrs: { for: "Admin" } },
+        [_vm._v("Is Admin")]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-check" }, [
+      _c("input", {
+        staticClass: "form-check-input",
+        attrs: { name: "in_team", type: "checkbox", value: "1", id: "Team" },
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "form-check" }, [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: {
-            name: "is_admin",
-            type: "checkbox",
-            value: "1",
-            id: "Admin",
-          },
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "form-check-label", attrs: { for: "Admin" } },
-          [_vm._v("Is Admin")]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-check" }, [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: { name: "in_team", type: "checkbox", value: "1", id: "Team" },
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "form-check-label", attrs: { for: "Team" } },
-          [_vm._v("In Team")]
-        ),
+      _c("label", { staticClass: "form-check-label", attrs: { for: "Team" } }, [
+        _vm._v("In Team"),
       ]),
     ])
   },
@@ -43612,7 +43641,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Position")]),
         _vm._v(" "),
-        _c("th", { staticStyle: { width: "20%" } }),
+        _c("th"),
       ]),
     ])
   },

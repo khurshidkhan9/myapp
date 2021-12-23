@@ -58,6 +58,9 @@
                         </form>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./">View Site</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
@@ -91,7 +94,7 @@
                 </li>
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ asset('img/static-img/user(1).png') }}" class="user-image img-circle elevation-2"
+                        <img src="{{ Auth::user()->img_path ? asset(Auth::user()->img_path) : asset('img/static-img/user(1).png'); }}" class="user-image img-circle elevation-2"
                             alt="User Image">
                         <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                     </a>

@@ -2,6 +2,16 @@
 
 @section('content')
 
+  <!-- ***** Header Area End ***** -->
+  @if (session()->has('error'))
+  <div class="container mt-3">
+
+      <div class="alert alert-danger">
+          {{ session()->get('error') }}
+      </div>
+  </div>
+@endif
+
     <!-- ***** Welcome Area Start ***** -->
     <section class="welcome-area">
         <!-- Welcome Slides -->

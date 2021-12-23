@@ -117,18 +117,22 @@ class UsersController extends Controller
                 $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
             }
 
+            
+            $this->img_name = $imageName;
+            $this->img_path = 'public/' . $path;
+            
+            if (user::where('id', $id)->update($request->only(['name', 'email', 'email_verified_at', 'is_admin', 'in_team', 'position','avatar', 'img_path', 'phone', 'address']) + ['avatar' => $this->img_name, 'img_path' => $this->img_path])) {
+                
+                return "User has been Updated successfully!";
+            } else {
+                return "User Update failed to create!";
+            }
+        }else {
+            
+            user::where('id', $id)->update($request->all());
+                return true;
         }
-
-        $this->img_name = $imageName;
-        $this->img_path = 'public/' . $path;
-
-        if (user::where('id', $id)->update($request->only(['name', 'email', 'email_verified_at', 'is_admin', 'in_team', 'position', 'password', 'avatar', 'img_path', 'phone', 'address']) + ['avatar' => $this->img_name, 'img_path' => $this->img_path])) {
-
-            return "User has been Updated successfully!";
-        } else {
-            return "User Update failed to create!";
         }
-    }
 
     /**
      * Remove the specified resource from storage.

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
-Route::get('admin/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+Route::get('admin', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('profile', [HomeController::class, 'profile'])->name('profile');
+Route::get('/profile/{id}/edit', [ UsersController::class, 'edit_profile'])->name('editProfile');
+Route::post('/profile/{id}/edit', [ UsersController::class, 'storeImage' ])->name('images.store');
 
-Route::prefix('/admin')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::resource('users', UsersController::class);
     Route::post('users/{id}', [UsersController::class, 'updateuser']);
 });

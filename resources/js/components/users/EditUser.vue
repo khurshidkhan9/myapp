@@ -21,6 +21,7 @@
               type="text"
               class="form-control"
               id="Name"
+              :value="user.name"
               placeholder="Name"
             />
           </div>
@@ -31,6 +32,7 @@
               type="email"
               class="form-control"
               id="Email"
+              :value="user.email"
               placeholder="Enter email"
             />
           </div>
@@ -41,6 +43,7 @@
               type="text"
               class="form-control"
               id="Position"
+              :value="user.position"
               placeholder="Enter Position"
             />
           </div>
@@ -51,6 +54,7 @@
               type="number"
               class="form-control"
               id="Phone"
+              :value="user.phone"
               placeholder="Enter Phone"
             />
           </div>
@@ -61,6 +65,7 @@
               type="text"
               class="form-control"
               id="Address"
+              :value="user.address"
               placeholder="Enter Address"
             />
           </div>
@@ -71,6 +76,7 @@
               type="password"
               class="form-control"
               id="exampleInputPassword1"
+              :value="user.password"
               placeholder="Password"
             />
           </div>
@@ -137,7 +143,7 @@ export default {
 
   data() {
     return {
-      user: {},
+      user: [],
     };
   },
   methods: {

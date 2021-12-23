@@ -24,13 +24,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        return view('/');
     }
 
-    public function profile()
+    public function adminHome()
+
     {
-       $profile = Auth::user();
-       return $profile;
+
+        return view('admin.index');
 
     }
+
+    // public function profile()
+    // {
+    //    $profile = Auth::user();
+    //    return $profile;
+
+    // }
 }
