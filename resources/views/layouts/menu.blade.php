@@ -38,16 +38,16 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="pages/charts/chartjs.html" class="nav-link">
+            <router-link to="/posts" class="nav-link">
                 <i class="fas fa-list nav-icon"></i>
                 <p>Show all Posts</p>
-            </a>
+            </router-link>
         </li>
         <li class="nav-item">
-            <a href="pages/charts/chartjs.html" class="nav-link">
+            <router-link to="/posts/create" class="nav-link">
                 <i class="fas fa-plus nav-icon"></i>
                 <p>Create New Post</p>
-            </a>
+            </router-link>
         </li>
     </ul>
 </li>

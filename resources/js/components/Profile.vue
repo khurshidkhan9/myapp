@@ -64,25 +64,25 @@
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Name">
+                          <input v-model="profile.name" type="text" class="form-control" id="inputName" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                          <input v-model="profile.email" type="email" class="form-control" id="inputEmail" placeholder="Email">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputposition" class="col-sm-2 col-form-label">Position</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputposition" placeholder="Position">
+                          <input v-model="profile.position" type="text" class="form-control" id="inputposition" placeholder="Position">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputaddress" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputaddress" placeholder="Address">
+                          <input v-model="profile.address" type="text" class="form-control" id="inputaddress" placeholder="Address">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -120,8 +120,9 @@
     };
   },
   created() {
-      axios.get("admin/profile").then(response => {
+      axios.get("profile").then(response => {
           this.profile = response.data;
+          console.log(this.profile);
       });
   },
     }

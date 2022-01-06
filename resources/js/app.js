@@ -13,12 +13,19 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 let routes = [
-    { path: '/', component: require('./components/Dashboard.vue').default },
-    { path: '/users', component: require('./components/users/ShowUsers.vue').default },
-    { path: '/users/create', component: require('./components/users/CreateUser.vue').default },
-    { path: '/users/:id', component: require('./components/users/CreateUser.vue').default },
-    { name: 'UpdateUser', path: '/users/:id', component: require('./components/users/EditUser.vue').default },
-    { path: '/profile', component: require('./components/Profile.vue').default }
+    { path: '/', component: require('./components/admin/Dashboard.vue').default },
+    { path: '/details', component: require('./components/admin/Dashboard.vue').default },
+    { path: '/profile', component: require('./components/Profile.vue').default },
+    
+    { path: '/users', component: require('./components/admin/users/Show.vue').default },
+    { path: '/users/create', component: require('./components/admin/users/Create.vue').default },
+    { path: '/users/:id', component: require('./components/admin/users/Create.vue').default },
+    { name: 'UpdateUser', path: '/users/:id', component: require('./components/admin/users/Edit.vue').default },
+    
+    { name: 'Show', path: '/posts', component: require('./components/admin/posts/Show.vue').default },
+    { name: 'Create', path: '/posts/create', component: require('./components/admin/posts/Create.vue').default },
+    { name: 'CreatePost', path: '/posts/:id', component: require('./components/admin/posts/Create.vue').default },
+    { name: 'UpdatePost', path: '/posts/:id', component: require('./components/admin/posts/Edit.vue').default },
   ]
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);

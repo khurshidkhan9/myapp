@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -44,8 +45,8 @@ class UsersController extends Controller
         ]);
         if ($request->file('file')) {
             $imagePath = $request->file('file');
-            $imageName = $imagePath->getClientOriginalName();
-            $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
+            $imageName = rand(5, 30) . "." . $imagePath->getClientOriginalName();
+            $path = $request->file('file')->storeAs('uploads/users', $imageName, 'public');
             $this->img_name = $imageName;
             $this->img_path = 'public/' . $path;
             if (User::create($request->all() + ['avatar' => $this->img_name, 'img_path' => $this->img_path])) {
@@ -108,29 +109,31 @@ class UsersController extends Controller
             $path = "./" . $user->img_path;
 
             if (empty($user->img_path)) {
-                $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
+                $path = $request->file('file')->storeAs('uploads/users', $imageName, 'public');
             } else {
                 if (file_exists($path)) {
                     unlink($path);
                 }
 
-                $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
+                $path = $request->file('file')->storeAs('uploads/users', $imageName, 'public');
             }
 
             
             $this->img_name = $imageName;
             $this->img_path = 'public/' . $path;
+            $password = Hash::make($request['password']);
             
-            if (user::where('id', $id)->update($request->only(['name', 'email', 'email_verified_at', 'is_admin', 'in_team', 'position','avatar', 'img_path', 'phone', 'address']) + ['avatar' => $this->img_name, 'img_path' => $this->img_path])) {
+            if (user::where('id', $id)->update($request->only(['name', 'email', 'email_verified_at', 'is_admin', 'in_team', 'position','avatar', 'img_path', 'phone', 'address']) + ['password' => $password,'avatar' => $this->img_name, 'img_path' => $this->img_path])) {
                 
-                return "User has been Updated successfully!";
+                return "User has been Updated with image successfully!";
             } else {
                 return "User Update failed to create!";
             }
         }else {
             
             user::where('id', $id)->update($request->all());
-                return true;
+            return "User has been Updated successfully!";
+
         }
         }
 
@@ -143,6 +146,10 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        $path = "./".$user->img_path;
+        if(file_exists($path)){
+            unlink($path);
+        }
         $user->delete();
 
         return response()->json('User deleted!');
