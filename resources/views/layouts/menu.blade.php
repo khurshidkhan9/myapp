@@ -61,16 +61,16 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="pages/charts/chartjs.html" class="nav-link">
+            <router-link to="/photos" class="nav-link">
                 <i class="fas fa-images nav-icon"></i>
                 <p>Show all photos</p>
-            </a>
+            </router-link>
         </li>
         <li class="nav-item">
-            <a href="pages/charts/chartjs.html" class="nav-link">
+            <router-link to="/photos/create" class="nav-link">
                 <i class="fas fa-plus nav-icon"></i>
                 <p>Upload New Photos</p>
-            </a>
+            </router-link>
         </li>
     </ul>
 </li>

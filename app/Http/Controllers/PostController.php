@@ -67,9 +67,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post = Post::where('id', $id)->get();
+        return view('blog-details', compact('post'));
     }
 
     /**
@@ -101,7 +102,7 @@ class PostController extends Controller
 
         if ($request->file('file')) {
             $imagePath = $request->file('file');
-            $imageName = date('Ymd') . "." . $imagePath->getClientOriginalExtension();
+            $imageName = rand(5, 30) . "." . $imagePath->getClientOriginalExtension();
             $input['image'] = $imageName;
 
             $post = Post::find($id);

@@ -32,7 +32,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('/');
+        $users = User::all()->where('in_team', 1);
+        $photos = Photo::all();
+        $posts = Post::all()->take(4);
+        return view('index', compact('posts', 'photos', 'users'));
     }
 
     public function adminHome()

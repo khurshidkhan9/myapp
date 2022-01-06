@@ -26,6 +26,11 @@ let routes = [
     { name: 'Create', path: '/posts/create', component: require('./components/admin/posts/Create.vue').default },
     { name: 'CreatePost', path: '/posts/:id', component: require('./components/admin/posts/Create.vue').default },
     { name: 'UpdatePost', path: '/posts/:id', component: require('./components/admin/posts/Edit.vue').default },
+
+    { name: 'Show', path: '/Photos', component: require('./components/admin/Photos/Show.vue').default },
+    { name: 'Create', path: '/Photos/create', component: require('./components/admin/Photos/Create.vue').default },
+    { name: 'CreatePhotos', path: '/Photos/:id', component: require('./components/admin/Photos/Create.vue').default },
+    { name: 'UpdatePhotos', path: '/Photos/:id', component: require('./components/admin/Photos/Edit.vue').default },
   ]
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);

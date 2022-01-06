@@ -103,7 +103,7 @@ class UsersController extends Controller
 
         if ($request->file('file')) {
             $imagePath = $request->file('file');
-            $imageName = $imagePath->getClientOriginalName();
+            $imageName = rand(5, 30) . "." . $imagePath->getClientOriginalName();
 
             $user = User::find($id);
             $path = "./" . $user->img_path;
@@ -118,24 +118,17 @@ class UsersController extends Controller
                 $path = $request->file('file')->storeAs('uploads/users', $imageName, 'public');
             }
 
-            
-            $this->img_name = $imageName;
-            $this->img_path = 'public/' . $path;
-            $password = Hash::make($request['password']);
-            
-            if (user::where('id', $id)->update($request->only(['name', 'email', 'email_verified_at', 'is_admin', 'in_team', 'position','avatar', 'img_path', 'phone', 'address']) + ['password' => $password,'avatar' => $this->img_name, 'img_path' => $this->img_path])) {
-                
-                return "User has been Updated with image successfully!";
-            } else {
-                return "User Update failed to create!";
-            }
-        }else {
-            
+            $img_name = $imageName;
+            $img_path = 'public/' . $path;
+            user::where('id', $id)->update($request->only(['name', 'email', 'email_verified_at', 'is_admin', 'in_team', 'position', 'password', 'avatar', 'img_path', 'phone', 'address']) + ['avatar' => $img_name, 'img_path' => $img_path]);
+            return "User has been Updated with image successfully!";
+        } else {
+
             user::where('id', $id)->update($request->all());
             return "User has been Updated successfully!";
 
         }
-        }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -146,8 +139,8 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $path = "./".$user->img_path;
-        if(file_exists($path)){
+        $path = "./" . $user->img_path;
+        if (file_exists($path)) {
             unlink($path);
         }
         $user->delete();

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +18,10 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::prefix('/')->group(function () {
+Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('post/{post}', [PageController::class, 'show'])->name('posts.show');
+    
 });
 
 Auth::routes();
@@ -37,6 +41,11 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('posts', PostController::class);
     Route::post('posts/{id}', [PostController::class, 'updatepost']);
+
+    // photos routes for admin panel
+
+    Route::resource('photos', PhotoController::class);
+    Route::post('photos/{id}', [PhotoController::class, 'updatephoto']);
 
 
 });

@@ -71,8 +71,8 @@
         </div>
     </section>
     <!-- ***** Welcome Area End ***** -->
-    {{-- @include('latestnews')
-    @include('testimonial') --}}
+    @include('latestnews')
+    @include('testimonial')
 
     <!-- ****** About Us Area Start ******* -->
     <section class="dento-about-us-area section-padding-100-0">
@@ -266,7 +266,7 @@
 
     <!-- gallery start -->
   
-    {{-- @include('gallery') --}}
+    @include('gallery')
     <!-- End -->
 
     <!-- Book An Oppointment Area Start -->
@@ -349,7 +349,7 @@
                 </div>
             </div>
 
-            {{-- <div class="row">
+            <div class="row">
                 <!-- Single Area -->
                 @if (count($users) >= 1)
                 @foreach ($users as $user)
@@ -383,7 +383,7 @@
             </div>
      
             @endif
-            </div> --}}
+            </div>
         </div>
     </section>
     <!-- ***** Area End ***** -->
