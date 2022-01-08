@@ -1315,6 +1315,7 @@ img.hover-shadow {
   position: relative;
   z-index: 1;
   height: 200px;
+  background-image: url(img/bg-img/12.jpg);
 }
 @media only screen and (max-width:767px) {
   .breadcumb-area {
@@ -1878,6 +1879,7 @@ img.hover-shadow {
   position: relative;
   z-index: 1;
   padding-top: 100px;
+  background-image: url(./img/bg-img/3.jpg);
 }
 
 .single-footer-widget {

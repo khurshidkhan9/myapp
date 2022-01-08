@@ -120,7 +120,7 @@ class UsersController extends Controller
 
             $img_name = $imageName;
             $img_path = 'public/' . $path;
-            user::where('id', $id)->update($request->only(['name', 'email', 'email_verified_at', 'is_admin', 'in_team', 'position', 'password', 'avatar', 'img_path', 'phone', 'address']) + ['avatar' => $img_name, 'img_path' => $img_path]);
+            user::where('id', $id)->update($request->only(['name', 'email', 'email_verified_at', 'is_admin', 'in_team', 'position', 'avatar', 'img_path', 'phone', 'address']) + ['avatar' => $img_name, 'img_path' => $img_path]);
             return "User has been Updated with image successfully!";
         } else {
 

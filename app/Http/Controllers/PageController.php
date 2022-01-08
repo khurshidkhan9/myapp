@@ -19,7 +19,13 @@ class PageController extends Controller
     {
         $users = User::all()->where('in_team', 1);
         $photos = Photo::all();
-        $posts = Post::all()->take(4);
+        $posts = Post::all()->take(8);
         return view('index', compact('posts', 'photos', 'users'));
+    }
+
+    public function showblog($id)
+    {
+        $post = Post::where('id', $id)->get();
+        return view('blog-details', compact('post'));
     }
 }

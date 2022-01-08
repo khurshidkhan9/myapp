@@ -84,10 +84,10 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="pages/charts/chartjs.html" class="nav-link">
+            <router-link to="/contact" class="nav-link">
                 <i class="fas fa-comments nav-icon"></i>
                 <p>Show all Messages</p>
-            </a>
+            </router-link>
         </li>
     </ul>
 </li>

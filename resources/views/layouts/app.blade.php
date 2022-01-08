@@ -59,7 +59,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./">View Site</a>
+                    <a class="nav-link" href="./" target="_blank">View Site</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
@@ -145,13 +145,7 @@
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
-
-
-
-
-
             <section class="content">
-                {{-- @yield('content') --}}
                 <router-view></router-view>
             </section>
         </div>
@@ -161,8 +155,11 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.0.5
             </div>
-            <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
+            <strong>
+                {{-- <script> --}}
+                    {{-- document.write(new Date().getFullYear()); --}}
+                {{-- </script>  --}}
+                All rights reserved | made with <i class="fas fa-heart    "></i> by <a href="https://www.fiverr.com/khurshidkhan2"> KhurshidKhan</a></strong>
         </footer>
     </div>
 

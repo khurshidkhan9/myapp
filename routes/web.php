@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use App\Http\Controllers\PhotoController;
 
 Route::prefix('/')->group(function () {
 Route::get('/', [PageController::class, 'index'])->name('home');
-Route::get('post/{post}', [PageController::class, 'show'])->name('posts.show');
+Route::get('posts/{post}', [PageController::class, 'showblog'])->name('posts.show');
     
 });
 
@@ -46,6 +47,11 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('photos', PhotoController::class);
     Route::post('photos/{id}', [PhotoController::class, 'updatephoto']);
+
+    // contact us routes for admin panel 
+
+    Route::resource('contact', ContactController::class);
+    Route::post('contact/{id}', [ContactController::class, 'updatephoto']);
 
 
 });

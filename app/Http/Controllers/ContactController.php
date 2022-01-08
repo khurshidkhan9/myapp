@@ -14,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contact = Contact::all()->toArray();
+        return array_reverse($contact);
     }
 
     /**
@@ -78,8 +79,11 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        //
+        $Contact = Contact::find($id);
+        $Contact->delete();
+
+        return response()->json('Contact deleted!');
     }
 }

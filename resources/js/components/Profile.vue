@@ -7,7 +7,7 @@
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle" src="" alt="User profile picture">
+                  <img class="profile-user-img img-fluid img-circle" :src="profile.img_path" alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center" >{{ profile.name }}</h3>
@@ -30,16 +30,14 @@
 
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                <p class="text-muted">Malibu, California</p>
+                <p class="text-muted">{{profile.address}}</p>
 
                 <hr>
 
                 <strong><i class="fas fa-pencil-alt mr-1"></i> Position</strong>
 
                 <p class="text-muted">
-                  <span class="tag tag-danger">Team Member</span>
-                  <span class="tag tag-success">Subscriber</span>
-                  <span class="tag tag-success">Visitor</span>
+                  <span class="tag tag-danger">{{profile.position}}</span>
                 </p>
 
                 <hr>

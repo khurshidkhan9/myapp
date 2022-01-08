@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 
     <!-- ***** Breadcrumb Area Start ***** -->
-    <div class="breadcumb-area bg-img bg-gradient-overlay" style="background-image: url(img/bg-img/12.jpg);">
+    <div class="breadcumb-area bg-img bg-gradient-overlay">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
