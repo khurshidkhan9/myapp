@@ -15,7 +15,7 @@ Vue.use(VueRouter)
 let routes = [
     { path: '/', component: require('./components/admin/Dashboard.vue').default },
     { path: '/details', component: require('./components/admin/Dashboard.vue').default },
-    { path: '/profile', component: require('./components/Profile.vue').default },
+    { path: '/profile', component: require('./components/admin/Profile.vue').default },
     
     { path: '/users', component: require('./components/admin/users/Show.vue').default },
     { path: '/users/create', component: require('./components/admin/users/Create.vue').default },
@@ -36,6 +36,13 @@ let routes = [
     { name: 'Create', path: '/contact/create', component: require('./components/admin/contacts/Create.vue').default },
     { name: 'Createcontact', path: '/contact/:id', component: require('./components/admin/contacts/Create.vue').default },
     { name: 'Updatecontact', path: '/contact/:id', component: require('./components/admin/contacts/Edit.vue').default },
+
+    { name: 'Show', path: '/comments', component: require('./components/admin/comments/Show.vue').default },
+    { name: 'Create', path: '/comment/create', component: require('./components/admin/comments/Create.vue').default },
+    { name: 'Createcomments', path: '/comment/:id', component: require('./components/admin/comments/Create.vue').default },
+    { name: 'Updatecomments', path: '/comment/:id', component: require('./components/admin/comments/Edit.vue').default },
+
+    { name: 'settings', path: '/settings', component: require('./components/admin/settings.vue').default },
   ]
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);

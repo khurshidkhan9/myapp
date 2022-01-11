@@ -79,7 +79,9 @@
         <i class="nav-icon fas fa-comment"></i>
         <p>
             Messages
-            <span class="badge badge-danger right">30</span>
+            @if ($message) 
+            <span class="badge badge-danger right">{{$message}}+</span>
+                @endif
         </p>
     </a>
     <ul class="nav nav-treeview">
@@ -101,16 +103,16 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="pages/charts/chartjs.html" class="nav-link">
+            <router-link to="/comments" class="nav-link">
                 <i class="far fa-comments nav-icon"></i>
                 <p>Show All Comments</p>
-            </a>
+            </router-link>
         </li>
         <li class="nav-item">
-            <a href="pages/charts/chartjs.html" class="nav-link">
+            <router-link to="/comment/create" class="nav-link">
                 <i class="fas fa-plus nav-icon"></i>
                 <p>Create New Comments</p>
-            </a>
+            </router-link>
         </li>
     </ul>
 </li>
@@ -123,12 +125,12 @@
     </router-link>
 </li>
 <li class="nav-item">
-    <a href="pages/calendar.html" class="nav-link">
+    <router-link to='/settings' class="nav-link">
         <i class="nav-icon fas fa-cogs"></i>
         <p>
             Settings
         </p>
-    </a>
+    </router-link>
 </li>
 <li class="nav-item">
     <a href="#" class="nav-link"

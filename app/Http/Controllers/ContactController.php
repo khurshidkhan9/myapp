@@ -14,8 +14,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contact = Contact::all()->toArray();
-        return array_reverse($contact);
+        $contact = Contact::all()->sortByDesc('created_at')->sortByDesc('id')->values();
+        Contact::query()->update(['read' => 1]);
+        return $contact;
     }
 
     /**

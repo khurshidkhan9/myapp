@@ -92,7 +92,7 @@ class HomeController extends Controller
     public function profile()
     {
        $Profile = Auth::user();
-       return view('../contact')->with('Profile', $Profile);
+       return $Profile;
 
     }
 }

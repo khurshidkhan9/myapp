@@ -60,7 +60,7 @@
 
                             <!-- Comments Area -->
                             <!-- Comments Area -->
-                            {{-- <div class="comment_area clearfix">
+                            <div class="comment_area clearfix">
                                 <h5 class="title"> {{ $object->comments->count() }} Comments</h5>
                                 @if (empty($object->comments))
                                     <h5>No Comments</h5>
@@ -68,31 +68,31 @@
                                     @include('commentsDisplay',['comments' => $object->comments, 'post_id' => $object->id])
                                 @endif
 
-                            </div> --}}
+                            </div>
 
                             <!-- Leave A Reply -->
-                            {{-- @if (Auth::user() == true)
+                             @if (Auth::user() == true)
                                 <div class="contact-form mt-30">
-                                    <h5 class="mb-30">Leave A Reply</h5> --}}
+                                    <h5 class="mb-30">Leave A Reply</h5>
 
                                     <!-- Form -->
-                                    {{-- <form method="post" action="{{ route('comments.store') }}">
+                                    <form method="post" action="{{ route('comments.store') }}">
                                         @csrf
-                                        <div class="row"> --}}
-                                            {{-- <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-lg-6">
                                             <input type="text" name="message-name" class="form-control mb-30" placeholder="Your Name">
                                             </div>
                                             <div class="col-lg-6">
                                             <input type="email" name="message-email" class="form-control mb-30" placeholder="Your Email">
-                                            </div> --}}
-                                            {{-- <div class="col-12">
+                                            </div> 
+                                            <div class="col-12">
                                                 <textarea name="body" class="form-control mb-30"
                                                     placeholder="Your Message"></textarea>
                                             </div>
-                                            <input type="hidden" name="post_id" value="{{ $object->id }}" /> --}}
+                                            <input type="hidden" name="post_id" value="{{ $object->id }}" />
 
-                                            {{-- <input type="hidden" name="parent_id" value="{{ $object->id }}" /> --}}
-                                            {{-- <div class="col-12">
+                                            <input type="hidden" name="parent_id" value="{{ $object->id }}" />
+                                            <div class="col-12">
                                                 <button type="submit" class="btn dento-btn">Reply</button>
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@
                             @else
                                 <button type="button" onclick="location.href='{{ URL('login') }}'"
                                     class="btn btn-primary mt-3">Login to comment</button>
-                            @endif --}}
+                            @endif
                         @endforeach
 
                     </div>
