@@ -7222,7 +7222,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      settings: []
+    };
+  },
+  methods: {
+    Addsettings: function Addsettings() {
+      var formData = new FormData(document.getElementById("myForm"));
+      var instance = this;
+      axios.post("admin/settings", formData).then(function (response) {
+        console.log(formData);
+        instance.$router.push("/settings");
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -45205,7 +45223,7 @@ var render = function () {
           on: {
             submit: function ($event) {
               $event.preventDefault()
-              return _vm.AddNewUser.apply(null, arguments)
+              return _vm.Addsettings.apply(null, arguments)
             },
           },
         },

@@ -11,7 +11,7 @@
          <!-- form start -->
          <form
             class="myform"
-            @submit.prevent="AddNewUser"
+            @submit.prevent="Addsettings"
             id="myForm"
             enctype="multipart/form-data"
             >
@@ -51,7 +51,7 @@
                      <div class="form-group">
                         <label for="Site address">Site Address</label>
                         <input
-                           name="site_address"
+                           name="address"
                            type="text"
                            class="form-control"
                            id="Name"
@@ -61,7 +61,7 @@
                      <div class="form-group">
                         <label for="email">Email</label>
                         <input
-                           name="site_email"
+                           name="email"
                            type="text"
                            class="form-control"
                            id="Name"
@@ -81,13 +81,13 @@
                   </div>
                   <div class="col-md-6">
                      <div class="form-group">
-                        <label for="email">Facebook</label>
+                        <label for="Facebook">Facebook</label>
                         <input
-                           name="site_email"
+                           name="facebook"
                            type="text"
                            class="form-control"
                            id="Name"
-                           placeholder="Email"
+                           placeholder="Facebook"
                            />
                      </div>
                      <div class="form-group">
@@ -156,7 +156,30 @@
    </div>
 </template>
 <script>
-   export default {};
+   export default {
+        data(){
+          return {
+            settings : [],
+          }
+        },
+
+        methods : { 
+          Addsettings() {
+            var formData = new FormData(document.getElementById("myForm"));
+            let instance = this;
+            axios.post("admin/settings", formData)
+            .then(function (response) {
+                console.log(formData);
+                instance.$router.push("/settings");
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          }
+        }
+
+
+}
 </script>
 <style></style>
 
