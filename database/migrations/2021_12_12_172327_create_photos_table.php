@@ -17,6 +17,7 @@ class CreatePhotosTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('photo');
+            $table->boolean('is_published')->nullable();
             $table->string('photo_path');
             $table->timestamps();
         });

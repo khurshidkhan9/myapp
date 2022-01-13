@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
+            $table->boolean('is_published')->nullable();
             $table->string('img_name')->nullable();
             $table->string('img_path')->nullable();
             $table->timestamps();

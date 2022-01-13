@@ -16,6 +16,7 @@ let routes = [
     { path: '/', component: require('./components/admin/Dashboard.vue').default },
     { path: '/details', component: require('./components/admin/Dashboard.vue').default },
     { path: '/profile', component: require('./components/admin/Profile.vue').default },
+    { path: '/donations', component: require('./components/admin/Donations.vue').default },
     
     { path: '/users', component: require('./components/admin/users/Show.vue').default },
     { path: '/users/create', component: require('./components/admin/users/Create.vue').default },

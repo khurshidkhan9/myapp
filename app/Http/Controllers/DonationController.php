@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Donation;
+
 
 class DonationController extends Controller
 {
@@ -12,8 +14,13 @@ class DonationController extends Controller
     }
 
     public function donationSuccess( Request $request ){
-        dump( "Donation Success" );
-        dd( $request->all() );
+        $donation =  Donation::create($request->all());
+        if($donation){
+
+            return "Post has been created successfully!";
+        }else {
+            return "Post failed to create!";
+        }
     }
 
     public function donationCancelled( Request $request ){
@@ -24,5 +31,19 @@ class DonationController extends Controller
     public function donationNotify( Request $request ){
         dump( "Donation Notify" );
         dd( $request->all() );
+    }
+
+    public function alldonations()
+    {
+        $donation = Donation::all()->toArray();
+        return array_reverse($donation);
+    }
+
+    public function destroy($id)
+    {
+        $donation = Donation::find($id);
+        $donation->delete();
+
+        return response()->json('donation deleted!');
     }
 }

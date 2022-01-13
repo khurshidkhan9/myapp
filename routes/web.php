@@ -74,6 +74,10 @@ Route::prefix('admin')->group(function () {
     //  setting routes for admin panel
     Route::resource('settings', SettingController::class);
 
+    //  donations routes for admin panel
+    Route::get('donations', [DonationController::class, 'alldonations']);
+    Route::delete('donations/{id}', [DonationController::class, 'destroy']);
+
 
 });
 });
