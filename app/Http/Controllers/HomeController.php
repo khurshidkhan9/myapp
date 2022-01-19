@@ -68,14 +68,14 @@ class HomeController extends Controller
 
 
 
-        // $result[] = ['Year','Click','Viewer'];
+        $result[] = ['Year','Click','Viewer'];
 
-        // foreach ($visitor as $key => $value) {
+        foreach ($visitor as $key => $value) {
 
-        // $result[++$key] = [$value->year, (int)$value->total_click, (int)$value->total_viewer];
+        $result[++$key] = [$value->year, (int)$value->total_click, (int)$value->total_viewer];
 
-        // }
-        // $visitor = json_encode($result);
+        }
+        $visitor = json_encode($result);
                          
 
 

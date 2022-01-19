@@ -5484,14 +5484,29 @@ __webpack_require__.r(__webpack_exports__);
       _this.post = res.data.post.length;
       _this.photo = res.data.photo.length;
       _this.comment = res.data.comment.length;
-      _this.visitor = res.data.visitor.length;
+      _this.visitor = res.data.visitor;
+      google.charts.load('current', {
+        'packages': ['corechart']
+      });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var as = JSON.parse(res.data.visitor);
+        var data = google.visualization.arrayToDataTable(as);
+        var options = {
+          title: 'Site Visitor Line Chart',
+          curveType: 'function',
+          legend: {
+            position: 'bottom'
+          }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+        chart.draw(data, options);
+      }
+
+      ;
       console.log(res.data);
     });
-  },
-  methods: {
-    callFunction: function callFunction() {
-      var currentDate = new Date();
-    }
   }
 });
 
@@ -64171,16 +64186,11 @@ var render = function () {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c(
-        "section",
-        { staticClass: "col-lg-7 connectedSortable ui-sortable" },
-        [_c("H1", [_vm._v("here will be graph")])],
-        1
-      ),
+      _vm._m(4),
       _vm._v(" "),
       _c("section", { staticClass: "col-lg-5 connectedSortable ui-sortable" }, [
         _c("div", { staticClass: "card bg-gradient-primary" }, [
-          _vm._m(4),
+          _vm._m(5),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer bg-transparent" }, [
             _c("div", { staticClass: "row" }, [
@@ -64188,21 +64198,21 @@ var render = function () {
                 _c("div", { attrs: { id: "sparkline-1" } }),
                 _vm._v(" "),
                 _c("div", { staticClass: "text-white" }, [
-                  _vm._v(_vm._s(_vm.visitor)),
+                  _vm._v(_vm._s(_vm.visitor["Click"])),
                 ]),
               ]),
               _vm._v(" "),
-              _vm._m(5),
-              _vm._v(" "),
               _vm._m(6),
+              _vm._v(" "),
+              _vm._m(7),
             ]),
           ]),
           _vm._v(" "),
-          _vm._m(7),
+          _vm._m(8),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card" }, [
-          _vm._m(8),
+          _vm._m(9),
           _vm._v(" "),
           _c("div", { staticClass: "card-body card-full" }, [
             _c(
@@ -64213,7 +64223,7 @@ var render = function () {
                 attrs: { id: "table" },
               },
               [
-                _vm._m(9),
+                _vm._m(10),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -64234,7 +64244,7 @@ var render = function () {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(user.name))]),
                       _vm._v(" "),
-                      user.last_seen == _vm.callFunction()
+                      user.last_seen
                         ? _c("td", { staticClass: "project-state" }, [
                             _c("span", { staticClass: "badge badge-success" }, [
                               _vm._v("Online"),
@@ -64293,6 +64303,21 @@ var staticRenderFns = [
     return _c("div", { staticClass: "icon" }, [
       _c("i", { staticClass: "ion ion-pie-graph" }),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "section",
+      { staticClass: "col-lg-7 connectedSortable ui-sortable" },
+      [
+        _c("div", {
+          staticStyle: { width: "900px", height: "500px" },
+          attrs: { id: "linechart" },
+        }),
+      ]
+    )
   },
   function () {
     var _vm = this

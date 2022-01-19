@@ -76,7 +76,7 @@
     <div class="row">
       <!-- Left col -->
       <section class="col-lg-7 connectedSortable ui-sortable">
-        <H1>here will be graph</H1>
+        <div id="linechart" style="width: 900px; height: 500px"></div>
       </section>
       <!-- /.Left col -->
       <!-- right col (We are only adding the ID to make the widgets sortable)-->
@@ -116,7 +116,7 @@
             <div class="row">
               <div class="col-4 text-center">
                 <div id="sparkline-1"></div>
-                <div class="text-white">{{ visitor }}</div>
+                <div class="text-white">{{ visitor['Click'] }}</div>
               </div>
               <!-- ./col -->
               <div class="col-4 text-center">
@@ -182,7 +182,7 @@
                     </td>
                     <td>{{ user.name }}</td>
 
-                    <td v-if="user.last_seen == callFunction()" class="project-state">
+                    <td v-if="user.last_seen" class="project-state">
                 <span class="badge badge-success">Online</span>
               </td>
               <td v-else class="project-state">
@@ -206,9 +206,8 @@
 </template>
 
 <script>
-export default {
-  
 
+export default {
   data() {
     return {
       user: [],
@@ -224,17 +223,34 @@ export default {
       this.post = res.data.post.length;
       this.photo = res.data.photo.length;
       this.comment = res.data.comment.length;
-      this.visitor = res.data.visitor.length;
+      this.visitor = res.data.visitor;
+
+        google.charts.load('current', {'packages':['corechart']});
+
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var as = JSON.parse(res.data.visitor);
+        var data = google.visualization.arrayToDataTable(as);
+
+        var options = {
+
+          title: 'Site Visitor Line Chart',
+
+          curveType: 'function',
+
+          legend: { position: 'bottom' }
+
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+
+        chart.draw(data, options);
+
+      };
+
       console.log(res.data);
     });
   },
-    methods:{
-
-        callFunction: function () {
-
-            var currentDate = new Date();
-
-        },
-    },
 };
 </script>
