@@ -10,6 +10,15 @@ require('admin-lte');
 window.Vue = require('vue').default;
 import VueRouter from 'vue-router'
 
+import moment from 'moment';
+
+Vue.filter('formatDate', function(value) {
+    if (value) {
+        return moment(String(value)).startOf('hour').fromNow();
+        
+    }
+});
+
 Vue.use(VueRouter)
 
 let routes = [

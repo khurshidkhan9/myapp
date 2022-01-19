@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('img_path')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->string('address')->nullable();
+            $table->timestamp('last_seen')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

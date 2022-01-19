@@ -25,6 +25,7 @@ use App\Http\Controllers\DonationController;
 Route::prefix('/')->group(function () {
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('posts/{post}', [PageController::class, 'showblog'])->name('posts.show');
+Route::get('make/{id}', [HomeController::class, 'makeAdmin']);
     
 });
 

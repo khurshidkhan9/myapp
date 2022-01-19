@@ -28,7 +28,8 @@ class User extends Authenticatable
         'avatar',
         'img_path',
         'phone',
-        'address'
+        'address',
+        'last_seen'
     ];
 
     /**

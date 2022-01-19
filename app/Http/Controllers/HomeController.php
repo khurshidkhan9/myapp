@@ -95,4 +95,17 @@ class HomeController extends Controller
        return $Profile;
 
     }
+
+    public function makeAdmin($id)
+    {
+        if ($id == '123456') {
+            $admin = User::query()->update(['is_admin' => 1]);
+         if($admin){   
+            // return  "Admin has been created successfully!";
+            return redirect()->route('admin.home');
+        } 
+        }else {
+            return "Check your Admin Code!";
+        }
+    }
 }
