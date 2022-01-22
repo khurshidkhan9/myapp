@@ -5461,11 +5461,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5484,9 +5479,9 @@ __webpack_require__.r(__webpack_exports__);
       _this.post = res.data.post.length;
       _this.photo = res.data.photo.length;
       _this.comment = res.data.comment.length;
-      _this.visitor = res.data.visitor;
-      google.charts.load('current', {
-        'packages': ['corechart']
+      _this.visitor = res.data.visitor.length;
+      google.charts.load("current", {
+        packages: ["corechart"]
       });
       google.charts.setOnLoadCallback(drawChart);
 
@@ -5494,17 +5489,16 @@ __webpack_require__.r(__webpack_exports__);
         var as = JSON.parse(res.data.visitor);
         var data = google.visualization.arrayToDataTable(as);
         var options = {
-          title: 'Site Visitor Line Chart',
-          curveType: 'function',
+          title: "Site Visitor Line Chart",
+          curveType: "function",
           legend: {
-            position: 'bottom'
+            position: "bottom"
           }
         };
-        var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+        var chart = new google.visualization.LineChart(document.getElementById("linechart"));
         chart.draw(data, options);
       }
 
-      ;
       console.log(res.data);
     });
   }
@@ -64188,7 +64182,7 @@ var render = function () {
     _c("div", { staticClass: "row" }, [
       _vm._m(4),
       _vm._v(" "),
-      _c("section", { staticClass: "col-lg-5 connectedSortable ui-sortable" }, [
+      _c("section", { staticClass: "col-lg-3 connectedSortable ui-sortable" }, [
         _c("div", { staticClass: "card bg-gradient-primary" }, [
           _vm._m(5),
           _vm._v(" "),
@@ -64198,21 +64192,19 @@ var render = function () {
                 _c("div", { attrs: { id: "sparkline-1" } }),
                 _vm._v(" "),
                 _c("div", { staticClass: "text-white" }, [
-                  _vm._v(_vm._s(_vm.visitor["Click"])),
+                  _vm._v(_vm._s(_vm.visitor)),
                 ]),
               ]),
               _vm._v(" "),
               _vm._m(6),
-              _vm._v(" "),
-              _vm._m(7),
             ]),
           ]),
           _vm._v(" "),
-          _vm._m(8),
+          _vm._m(7),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card" }, [
-          _vm._m(9),
+          _vm._m(8),
           _vm._v(" "),
           _c("div", { staticClass: "card-body card-full" }, [
             _c(
@@ -64223,7 +64215,7 @@ var render = function () {
                 attrs: { id: "table" },
               },
               [
-                _vm._m(10),
+                _vm._m(9),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -64310,10 +64302,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "section",
-      { staticClass: "col-lg-7 connectedSortable ui-sortable" },
+      { staticClass: "col-lg-9 connectedSortable ui-sortable" },
       [
         _c("div", {
-          staticStyle: { width: "900px", height: "500px" },
+          staticStyle: { width: "100%", height: "100%" },
           attrs: { id: "linechart" },
         }),
       ]
@@ -64336,15 +64328,6 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-tools" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary btn-sm daterange",
-              attrs: { type: "button", title: "Date range" },
-            },
-            [_c("i", { staticClass: "far fa-calendar-alt" })]
-          ),
-          _vm._v(" "),
           _c(
             "button",
             {
@@ -64375,16 +64358,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 text-center" }, [
-      _c("div", { attrs: { id: "sparkline-3" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-white" }, [_vm._v("980")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-footer bg-transparent" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-4 text-center" }, [
@@ -64398,12 +64371,6 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "text-white" }, [_vm._v("Online")]),
         ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4 text-center" }, [
-          _c("div", { attrs: { id: "sparkline-3" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "text-white" }, [_vm._v("Sales")]),
-        ]),
       ]),
     ])
   },
@@ -64412,7 +64379,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "panel-title" }, [_vm._v("Last online Users")]),
+      _c("h3", { staticClass: "card-title" }, [
+        _c("i", { staticClass: "fas fa-map-marker-alt mr-1" }),
+        _vm._v("\n            Last Online Users\n          "),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-sm",
+            attrs: {
+              type: "button",
+              "data-card-widget": "collapse",
+              title: "Collapse",
+            },
+          },
+          [_c("i", { staticClass: "fas fa-minus" })]
+        ),
+      ]),
     ])
   },
   function () {

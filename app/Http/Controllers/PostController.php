@@ -151,4 +151,17 @@ class PostController extends Controller
 
         return response()->json('Post deleted!');
     }
+
+    /**
+     * show the all services
+     *
+     * @param  \App\Models\Post  $photo
+     * @return \Illuminate\Http\Response
+     */
+
+    public function services()
+    {
+        $posts = Post::all();
+        return view('services', compact('posts'));
+    }
 }

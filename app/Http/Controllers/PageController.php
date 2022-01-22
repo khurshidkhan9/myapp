@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
@@ -48,4 +48,36 @@ class PageController extends Controller
         $post = Post::where('id', $id)->get();
         return view('blog-details', compact('post'));
     }
+    public function about()
+    {
+        if (View::exists('about')) {
+            return view('about');
+
+        }
+    }
+    public function services()
+    {
+        if (View::exists('services')) {
+            $posts = Post::all();
+        return view('services', compact('posts'));
+
+        }
+    }
+    public function gallery()
+    {
+        if (View::exists('gallery')) {
+            $photos = Photo::paginate(12);
+        return view('gallerypage', compact('photos'));
+
+        }
+    }
+    public function contact()
+    {
+        if (View::exists('contact')) {
+            // $photos = Photo::paginate(12);
+        return view('contact');
+
+        }
+    }
+    
 }

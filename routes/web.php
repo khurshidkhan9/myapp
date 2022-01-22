@@ -24,9 +24,12 @@ use App\Http\Controllers\DonationController;
 
 Route::prefix('/')->group(function () {
 Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('posts/{post}', [PageController::class, 'showblog'])->name('posts.show');
 Route::get('make/{id}', [HomeController::class, 'makeAdmin']);
-    
 });
 
 Auth::routes();

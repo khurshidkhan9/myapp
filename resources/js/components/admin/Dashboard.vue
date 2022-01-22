@@ -75,12 +75,12 @@
     <!-- Main row -->
     <div class="row">
       <!-- Left col -->
-      <section class="col-lg-7 connectedSortable ui-sortable">
-        <div id="linechart" style="width: 900px; height: 500px"></div>
+      <section class="col-lg-9 connectedSortable ui-sortable">
+        <div id="linechart" style="width: 100%; height: 100%"></div>
       </section>
       <!-- /.Left col -->
       <!-- right col (We are only adding the ID to make the widgets sortable)-->
-      <section class="col-lg-5 connectedSortable ui-sortable">
+      <section class="col-lg-3 connectedSortable ui-sortable">
         <!-- Map card -->
         <div class="card bg-gradient-primary">
           <div
@@ -93,13 +93,6 @@
             </h3>
             <!-- card tools -->
             <div class="card-tools">
-              <button
-                type="button"
-                class="btn btn-primary btn-sm daterange"
-                title="Date range"
-              >
-                <i class="far fa-calendar-alt"></i>
-              </button>
               <button
                 type="button"
                 class="btn btn-primary btn-sm"
@@ -116,19 +109,13 @@
             <div class="row">
               <div class="col-4 text-center">
                 <div id="sparkline-1"></div>
-                <div class="text-white">{{ visitor['Click'] }}</div>
+                <div class="text-white">{{ visitor }}</div>
               </div>
               <!-- ./col -->
               <div class="col-4 text-center">
                 <div id="sparkline-2"></div>
                 <div class="text-white">2034</div>
               </div>
-              <!-- ./col -->
-              <div class="col-4 text-center">
-                <div id="sparkline-3"></div>
-                <div class="text-white">980</div>
-              </div>
-              <!-- ./col -->
             </div>
             <!-- /.row -->
           </div>
@@ -145,56 +132,64 @@
                 <div class="text-white">Online</div>
               </div>
               <!-- ./col -->
-              <div class="col-4 text-center">
-                <div id="sparkline-3"></div>
-                <div class="text-white">Sales</div>
-              </div>
-              <!-- ./col -->
             </div>
             <!-- /.row -->
           </div>
         </div>
 
         <!-- <div class="col-md-6"> -->
-          <div class="card">
-            <div class="card-header">
-              <h3 class="panel-title">Last online Users</h3>
-            </div>
-            <div class="card-body card-full">
-              <table
-                class="table table-bordered table-condensed table-responsive"
-                id="table"
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-map-marker-alt mr-1"></i>
+              Last Online Users
+            </h3>
+            <div class="card-tools">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm"
+                data-card-widget="collapse"
+                title="Collapse"
               >
-                <thead>
-                  <tr>
-                    <th>Profile Photo</th>
-                    <th>Username</th>
-                    <th>Status</th>
-                    <th>Last seen</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="user in user" :key="user.id">
-                    <td>
-                      <a class="btnInfo" href="#"
-                        ><img class="rounded" :src="user.img_path" width="80"
-                      /></a>
-                    </td>
-                    <td>{{ user.name }}</td>
-
-                    <td v-if="user.last_seen" class="project-state">
-                <span class="badge badge-success">Online</span>
-              </td>
-              <td v-else class="project-state">
-                <span class="badge badge-danger">Offline</span>
-              </td>
-                    <td>{{ user.last_seen | formatDate }}</td>
-                  </tr>
-                </tbody>
-              </table>
+                <i class="fas fa-minus"></i>
+              </button>
             </div>
           </div>
-          <!--/.Panel -->
+          <div class="card-body card-full">
+            <table
+              class="table table-bordered table-condensed table-responsive"
+              id="table"
+            >
+              <thead>
+                <tr>
+                  <th>Profile Photo</th>
+                  <th>Username</th>
+                  <th>Status</th>
+                  <th>Last seen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="user in user" :key="user.id">
+                  <td>
+                    <a class="btnInfo" href="#"
+                      ><img class="rounded" :src="user.img_path" width="80"
+                    /></a>
+                  </td>
+                  <td>{{ user.name }}</td>
+
+                  <td v-if="user.last_seen" class="project-state">
+                    <span class="badge badge-success">Online</span>
+                  </td>
+                  <td v-else class="project-state">
+                    <span class="badge badge-danger">Offline</span>
+                  </td>
+                  <td>{{ user.last_seen | formatDate }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!--/.Panel -->
         <!-- </div> -->
 
         <!-- /.card -->
@@ -206,7 +201,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -223,9 +217,9 @@ export default {
       this.post = res.data.post.length;
       this.photo = res.data.photo.length;
       this.comment = res.data.comment.length;
-      this.visitor = res.data.visitor;
+      this.visitor = res.data.visitor.length;
 
-        google.charts.load('current', {'packages':['corechart']});
+      google.charts.load("current", { packages: ["corechart"] });
 
       google.charts.setOnLoadCallback(drawChart);
 
@@ -234,20 +228,19 @@ export default {
         var data = google.visualization.arrayToDataTable(as);
 
         var options = {
+          title: "Site Visitor Line Chart",
 
-          title: 'Site Visitor Line Chart',
+          curveType: "function",
 
-          curveType: 'function',
-
-          legend: { position: 'bottom' }
-
+          legend: { position: "bottom" },
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+        var chart = new google.visualization.LineChart(
+          document.getElementById("linechart")
+        );
 
         chart.draw(data, options);
-
-      };
+      }
 
       console.log(res.data);
     });
