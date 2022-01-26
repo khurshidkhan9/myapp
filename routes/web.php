@@ -73,7 +73,6 @@ Route::prefix('admin')->group(function () {
 
     // comments routes for admin panel 
     Route::resource('comments', CommentController::class);
-    Route::post('comments/{id}', [CommentController::class, 'updatecomment']);
 
     //  setting routes for admin panel
     Route::resource('settings', SettingController::class);

@@ -39,7 +39,7 @@
           <tbody>
             <tr v-for="comment in comments" :key="comment.id">
               <td>{{ comment.id }}</td>
-              <td>{{ comment.body }}</td>
+              <td><textarea v-model="comment.body"></textarea></td>
               <td>{{ comment.created_at }}</td>
               <td>{{ comment.updated_at }}</td>
               <td class="project-actions text-right">

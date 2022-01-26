@@ -48,9 +48,6 @@ let routes = [
     { name: 'Updatecontact', path: '/contact/:id', component: require('./components/admin/contacts/Edit.vue').default },
 
     { name: 'Show', path: '/comments', component: require('./components/admin/comments/Show.vue').default },
-    { name: 'Create', path: '/comment/create', component: require('./components/admin/comments/Create.vue').default },
-    { name: 'Createcomments', path: '/comment/:id', component: require('./components/admin/comments/Create.vue').default },
-    { name: 'Updatecomments', path: '/comment/:id', component: require('./components/admin/comments/Edit.vue').default },
 
     { name: 'settings', path: '/settings', component: require('./components/admin/settings.vue').default },
   ]

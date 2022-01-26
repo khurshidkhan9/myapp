@@ -50,7 +50,7 @@
               <td>{{ contact.email }}</td>
               <td>{{ contact.phone }}</td>
               <td>{{ contact.subject }}</td>
-              <td>{{ contact.message }}</td>
+              <td><textarea v-model="contact.message"></textarea></td>
               <td>{{ contact.updated_at }}</td>
               <!-- <td v-if="contact.email_verified_at" class="project-state">
                 <span class="badge badge-success">verified</span>

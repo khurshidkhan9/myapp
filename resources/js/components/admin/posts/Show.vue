@@ -47,7 +47,7 @@
                 <br />
                 <small> {{ post.created_at }} </small>
               </td>
-              <td>{{ post.body }}</td>
+              <td><textarea v-model="post.body"></textarea></td>
               <td>{{ post.updated_at }}</td>
               <td v-if="post.email_verified_at" class="project-state">
                 <span class="badge badge-success">verified</span>

@@ -108,12 +108,6 @@
                 <p>Show All Comments</p>
             </router-link>
         </li>
-        <li class="nav-item">
-            <router-link to="/comment/create" class="nav-link">
-                <i class="fas fa-plus nav-icon"></i>
-                <p>Create New Comments</p>
-            </router-link>
-        </li>
     </ul>
 </li>
 <li class="nav-item">
