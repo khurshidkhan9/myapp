@@ -25,17 +25,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="body">Body</label>
-            <textarea
-              class="form-control"
-              id="tinymce"
-              name="body"
-              rows="3"
-              placeholder="Enter a description for your post"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputFile">File input</label>
+            <label for="exampleInputFile">Main Image</label>
             <div class="input-group">
               <div class="custom-file">
                 <input
@@ -52,6 +42,10 @@
                 <span class="input-group-text">Upload</span>
               </div>
             </div>
+          </div>
+          <div class="form-group">
+            <label for="body">Body</label>
+            <textarea class="form-control" id="tinymce" name="body" rows="3" placeholder="Enter a description for your post"></textarea>
           </div>
           <div class="form-check">
             <input

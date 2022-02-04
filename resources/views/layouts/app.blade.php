@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
-     <!-- Title -->
-     <title>Amin Foundation - Fundraiser &amp; helping Children</title>
+    <!-- Title -->
+    <title>Amin Foundation - Fundraiser &amp; helping Children</title>
 
-     <!-- Favicon -->
-     <link rel="icon" href="{{ asset('img/core-img/logo.png') }}">
-        
-        {{-- @yield('third_party_stylesheets')
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('img/core-img/logo.png') }}">
+
+    {{-- @yield('third_party_stylesheets')
         
         @stack('page_css') --}}
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
 
@@ -64,8 +64,9 @@
                 <li class="nav-item dropdown">
                     <router-link to="/contact" class="nav-link" data-toggle="dropdown">
                         <i class="far fa-bell"></i>
-                        @if ($message) 
-                        <span class="badge badge-danger navbar-badge" style="top: 0;right: 0;">{{$message}}</span>
+                        @if ($message)
+                            <span class="badge badge-danger navbar-badge"
+                                style="top: 0;right: 0;">{{ $message }}</span>
                         @endif
                     </router-link>
                 </li>
@@ -76,8 +77,8 @@
                 </li>
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ Auth::user()->img_path ? asset(Auth::user()->img_path) : asset('img/static-img/user(1).png'); }}" class="user-image img-circle elevation-2"
-                            alt="User Image">
+                        <img src="{{ Auth::user()->img_path ? asset(Auth::user()->img_path) : asset('img/static-img/user(1).png') }}"
+                            class="user-image img-circle elevation-2" alt="User Image">
                         <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -139,13 +140,16 @@
             </div>
             <strong>
                 {{-- <script> --}}
-                    {{-- document.write(new Date().getFullYear()); --}}
-                {{-- </script>  --}}
-                All rights reserved | made with <i class="fas fa-heart    "></i> by <a href="https://www.fiverr.com/khurshidkhan2"> KhurshidKhan</a></strong>
+                {{-- document.write(new Date().getFullYear()); --}}
+                {{-- </script> --}}
+                All rights reserved | made with <i class="fas fa-heart    "></i> by <a
+                    href="https://www.fiverr.com/khurshidkhan2"> KhurshidKhan</a></strong>
         </footer>
     </div>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/tinymce/tinymce.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/tinymce/init_tinymce.js') }}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     @yield('third_party_scripts')

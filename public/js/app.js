@@ -5406,61 +5406,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5478,8 +5423,8 @@ __webpack_require__.r(__webpack_exports__);
       _this.user = res.data.user;
       _this.post = res.data.post.length;
       _this.photo = res.data.photo.length;
-      _this.comment = res.data.comment.length;
-      _this.visitor = res.data.visitor.length;
+      _this.comment = res.data.comment.length; // this.visitor = res.data.visitor.length;
+
       google.charts.load("current", {
         packages: ["corechart"]
       });
@@ -6646,12 +6591,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -7561,6 +7500,14 @@ __webpack_require__(/*! admin-lte */ "./node_modules/admin-lte/dist/js/adminlte.
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
 
 
+Vue.filter('checkls', function (value) {
+  if (value) {
+    var now = moment__WEBPACK_IMPORTED_MODULE_0___default()();
+    var hourToCheck = now.day() !== 0 ? 17 : 15; // return moment().isAfter(hourToCheck);
+
+    return moment__WEBPACK_IMPORTED_MODULE_0___default()(String(value)).startOf('hour').fromNow();
+  }
+});
 Vue.filter('formatDate', function (value) {
   if (value) {
     return moment__WEBPACK_IMPORTED_MODULE_0___default()(String(value)).startOf('hour').fromNow();
@@ -63821,28 +63768,8 @@ var render = function () {
       _vm._m(4),
       _vm._v(" "),
       _c("section", { staticClass: "col-lg-3 connectedSortable ui-sortable" }, [
-        _c("div", { staticClass: "card bg-gradient-primary" }, [
-          _vm._m(5),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer bg-transparent" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-4 text-center" }, [
-                _c("div", { attrs: { id: "sparkline-1" } }),
-                _vm._v(" "),
-                _c("div", { staticClass: "text-white" }, [
-                  _vm._v(_vm._s(_vm.visitor)),
-                ]),
-              ]),
-              _vm._v(" "),
-              _vm._m(6),
-            ]),
-          ]),
-          _vm._v(" "),
-          _vm._m(7),
-        ]),
-        _vm._v(" "),
         _c("div", { staticClass: "card" }, [
-          _vm._m(8),
+          _vm._m(5),
           _vm._v(" "),
           _c("div", { staticClass: "card-body card-full" }, [
             _c(
@@ -63853,7 +63780,7 @@ var render = function () {
                 attrs: { id: "table" },
               },
               [
-                _vm._m(9),
+                _vm._m(6),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -63948,69 +63875,6 @@ var staticRenderFns = [
         }),
       ]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "card-header border-0 ui-sortable-handle",
-        staticStyle: { cursor: "move" },
-      },
-      [
-        _c("h3", { staticClass: "card-title" }, [
-          _c("i", { staticClass: "fas fa-map-marker-alt mr-1" }),
-          _vm._v("\n            Visitors\n          "),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-tools" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary btn-sm",
-              attrs: {
-                type: "button",
-                "data-card-widget": "collapse",
-                title: "Collapse",
-              },
-            },
-            [_c("i", { staticClass: "fas fa-minus" })]
-          ),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 text-center" }, [
-      _c("div", { attrs: { id: "sparkline-2" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-white" }, [_vm._v("2034")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-footer bg-transparent" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-4 text-center" }, [
-          _c("div", { attrs: { id: "sparkline-1" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "text-white" }, [_vm._v("Visitors")]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4 text-center" }, [
-          _c("div", { attrs: { id: "sparkline-2" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "text-white" }, [_vm._v("Online")]),
-        ]),
-      ]),
-    ])
   },
   function () {
     var _vm = this
@@ -65785,22 +65649,8 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "body" } }, [_vm._v("Body")]),
-        _vm._v(" "),
-        _c("textarea", {
-          staticClass: "form-control",
-          attrs: {
-            id: "tinymce",
-            name: "body",
-            rows: "3",
-            placeholder: "Enter a description for your post",
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "exampleInputFile" } }, [
-          _vm._v("File input"),
+          _vm._v("Main Image"),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "input-group" }, [
@@ -65824,6 +65674,20 @@ var staticRenderFns = [
             _c("span", { staticClass: "input-group-text" }, [_vm._v("Upload")]),
           ]),
         ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "body" } }, [_vm._v("Body")]),
+        _vm._v(" "),
+        _c("textarea", {
+          staticClass: "form-control",
+          attrs: {
+            id: "tinymce",
+            name: "body",
+            rows: "3",
+            placeholder: "Enter a description for your post",
+          },
+        }),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-check" }, [

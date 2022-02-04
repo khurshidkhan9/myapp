@@ -14,6 +14,7 @@
           <div class="comment-meta">
             <a href="#" class="post-author">{{ $comment->user->name }} / <span>{{ $comment->created_at->format('j F, Y \\a\\t h:i A')}}</span></a>
             <p>{{ $comment->body }}.</p>
+            @if (Auth::user() == true)
             <form method="post" action="{{ route('comments.store') }}">
 
               @csrf
@@ -38,8 +39,10 @@
                 
               </div>
           </form>
+          @endif
           </div>
         </div>
+        
         @include('commentsDisplay', ['comments' => $comment->replies])
         {{-- @include('commentReply', ['replys' => $comment->replies]) --}}
       </li>
