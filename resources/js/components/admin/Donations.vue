@@ -6,6 +6,7 @@
         <h3 class="card-title">All donations Table</h3>
 
         <div class="card-tools">
+          <button class="btn btn-primary" onclick="printTable();"><span class="fas fa-print"></span> Print</button>
           <button
             type="button"
             class="btn btn-tool"
@@ -25,7 +26,7 @@
         </div>
       </div>
       <div class="card-body p-0" style="display: block">
-        <table class="table table-striped projects">
+        <table class="table table-striped projects" id="toPrint">
           <thead>
             <tr>
               <th style="width: 1%">#</th>

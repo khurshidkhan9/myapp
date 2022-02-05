@@ -37,27 +37,24 @@ class PhotoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            // 'name' => 'required',
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $input = $request->all();
         if ($image = $request->file('file')) {
-            // $profileImage = date('Ymd') . "." . $image->getClientOriginalExtension();
-            $profileImage = rand(5, 30) . "." . $image->getClientOriginalName();
-            $path = $image->storeAs('uploads/photos', $profileImage, 'public');
+            // $img = date('Ymd') . "." . $image->getClientOriginalExtension();
+            $img = rand(5, 30) . "." . $image->getClientOriginalName();
+            $path = $image->storeAs('uploads/photos', $img, 'public');
 
-            $input['photo'] = "$profileImage";
+            $input['name'] = "$img";
+            $input['photo'] = "$img";
             $input['photo_path'] = 'public/' . $path;
         } else {
             unset($input['file']);
         }
-
-        // $this->photo = $profileImage;
-        // $this->photo_path = '/public/'.$path;
-
         photo::create($input);
 
-        return 'Photo updated successfully';
+        return response()->json(['success'=>'You have successfully upload Image.']);
     }
 
     /**

@@ -12,16 +12,6 @@ import VueRouter from 'vue-router'
 
 import moment from 'moment';
 
-Vue.filter('checkls', function(value) {
-    if (value) {
-      var now = moment();
-      var hourToCheck = (now.day() !== 0)?17:15;
-      // return moment().isAfter(hourToCheck);
-      return moment(String(value)).startOf('hour').fromNow();
-    }
-});
-
-
 Vue.filter('formatDate', function(value) {
     if (value) {
         return moment(String(value)).startOf('hour').fromNow();

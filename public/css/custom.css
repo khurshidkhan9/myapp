@@ -1,0 +1,12 @@
+@media print {
+    /*--------Hide last column header (th) ---------*/
+    table thead tr th:last-child  {
+        display: none;
+    }
+    /*-----------------------------------*/
+    /*--------Hide last column rows (td) ---------*/
+    table tbody tr td:last-child  {
+        display: none;
+    }
+    /*-----------------------------------*/
+}
