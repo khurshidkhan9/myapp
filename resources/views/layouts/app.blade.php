@@ -149,14 +149,14 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/custom.js') }}" defer></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/plugins/tinymce/tinymce.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/plugins/tinymce/init_tinymce.js') }}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-    @yield('third_party_scripts')
-
-    @stack('page_scripts')
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

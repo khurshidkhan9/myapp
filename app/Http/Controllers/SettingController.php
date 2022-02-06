@@ -14,7 +14,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+        $Setting = Setting::all()->toArray();
+        return $Setting;
     }
 
     /**
@@ -36,57 +37,65 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'site_title' => 'required',
-            'site_url' => 'required',
-            'site_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'site_url' => 'url',
+            'site_logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($request->file('site_logo')) {
 
+            $video_name = '';
+            $video_path = '';
             // file handling for logo
-            $imagePath = $request->file('site_logo');
-            $imageName = rand(5, 30) . "." . $imagePath->getClientOriginalExtension();
+            $image_Path = $request->file('site_logo');
+            $imageName = rand(5, 30) . "." . $image_Path->getClientOriginalExtension();
 
             $logo_path = $request->file('site_logo')->storeAs('uploads/settings/logo', $imageName, 'public');
+              // file handling for logo
+            
+              $this->site_logo = $imageName;
+              $this->logo_path = 'public/' . $logo_path;
 
             // file handling for video
+            if ($request->file('video')) {
+                # code...
+                $videopath = $request->file('video');
+                $videoname = rand(5, 30) . "." . $videopath->getClientOriginalExtension();
+                
+                $video_path = $request->file('video')->storeAs('uploads/settings/video', $videoname, 'public');
+                // file handling for video
+                $this->video_name = $videoname;
+                $this->video_path = 'public/' . $video_path;
+            }
 
-            $videopath = $request->file('video');
-            $videoname = rand(5, 30) . "." . $videopath->getClientOriginalExtension();
+          
+            
 
-            $video_path = $request->file('video')->storeAs('uploads/settings/video', $videoname, 'public');
-
-        }
-        // file handling for logo
-
-        $this->site_logo = $imageName;
-        $this->logo_path = 'public/' . $logo_path;
-
-        // file handling for video
-        $this->video_name = $videoname;
-        $this->video_path = 'public/' . $video_path;
-
-        if (Setting::create($request->only([
-            'site_title',
-            'site_logo',
-            'logo_path',
-            'site_url',
-            'address',
-            'email',
-            'phone',
-            'facebooK',
-            'google',
-            'video_name',
-            'video_path',
-            'dow',
-            'status',
-            'start_time',
-            'close_time',
-        ]) + ['site_logo' => $this->site_logo, 'logo_path' => $this->logo_path, 'video_name' => $this->video_name, 'video_path' => $this->video_path])) {
-
-            return "Settings created successfully!";
+            Setting::create($request->only([
+                'site_title',
+                'site_logo',
+                'logo_path',
+                'site_url',
+                'Paypal-key',
+                'stirpe-key',
+                'stirpe-secret-key',
+                'address',
+                'email',
+                'phone',
+                'facebooK',
+                'google',
+                'video_name',
+                'video_path',
+                'dow',
+                'Payment-mt',
+                'status',
+                'start_time',
+                'close_time',
+            ]) + ['site_logo' => $this->site_logo, 'logo_path' => $this->logo_path, 'video_name' => $video_name, 'video_path' => $video_path]);
+            return "Settings created with Images successfully!";
         } else {
-            return "Settings failed to create!";
+            Setting::create($request->all());
+
+                return "Settings created successfully!";
         }
     }
 

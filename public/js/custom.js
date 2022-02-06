@@ -104,3 +104,20 @@ function printTable() {
 	newPrint.print();
 	newPrint.close();
 }
+
+
+
+// custom code for payment button toggle
+
+  
+  $('#customSwitch1').change(function() {
+      if($(this).is(":checked")){
+        $('#customSwitch2').attr('checked', false);
+      }    
+  });
+  
+  $('#customSwitch2').change(function() {
+      if($(this).is(":checked")){
+        $('#customSwitch1').attr('checked', false);
+      }    
+  });

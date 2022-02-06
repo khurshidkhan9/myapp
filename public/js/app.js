@@ -6982,6 +6982,83 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6989,6 +7066,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getSetting: function getSetting() {
+      var instance = this;
+      axios.get("admin/settings").then(function (response) {
+        instance.settings = response.data;
+        console.log("Success");
+      })["catch"](function (error) {
+        console.log("Error");
+      });
+    },
     Addsettings: function Addsettings() {
       var formData = new FormData(document.getElementById("myForm"));
       var instance = this;
@@ -6999,6 +7085,16 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     }
+  }
+});
+$('#customSwitch1').click(function () {
+  if ($(this).is(":checked")) {
+    $('#customSwitch2').attr('checked', false);
+  }
+});
+$('#customSwitch2').click(function () {
+  if ($(this).is(":checked")) {
+    $('#customSwitch1').attr('checked', false);
   }
 });
 
@@ -7454,7 +7550,8 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 
 Vue.filter('formatDate', function (value) {
   if (value) {
-    return moment__WEBPACK_IMPORTED_MODULE_0___default()(String(value)).startOf('hour').fromNow();
+    // return moment(String(value)).startOf('hour').fromNow();
+    return moment__WEBPACK_IMPORTED_MODULE_0___default()(String(value)).calendar();
   }
 });
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -66405,24 +66502,20 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-md-12" }, [
-    _c("div", { staticClass: "card card-primary" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          staticClass: "myform",
-          attrs: { id: "myForm", enctype: "multipart/form-data" },
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.Addsettings.apply(null, arguments)
-            },
+    _c(
+      "form",
+      {
+        staticClass: "myform",
+        attrs: { id: "myForm", enctype: "multipart/form-data" },
+        on: {
+          submit: function ($event) {
+            $event.preventDefault()
+            return _vm.Addsettings.apply(null, arguments)
           },
         },
-        [_vm._m(1), _vm._v(" "), _vm._m(2)]
-      ),
-    ]),
+      },
+      [_vm._m(0), _vm._v(" "), _vm._m(1)]
+    ),
   ])
 }
 var staticRenderFns = [
@@ -66430,192 +66523,348 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Settings")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "Site Logo" } }, [_vm._v("Site Logo")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "site_logo",
-                type: "file",
-                id: "Name",
-                placeholder: "Site Logo",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "Site title" } }, [
-              _vm._v("Site Title"),
+    return _c("div", { staticClass: "col-md-9" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header p-2" }, [
+          _c("ul", { staticClass: "nav nav-pills" }, [
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#general", "data-toggle": "tab" },
+                },
+                [_vm._v("General Settings")]
+              ),
             ]),
             _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "site_title",
-                type: "text",
-                id: "Name",
-                placeholder: "Site Title",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "Site url" } }, [_vm._v("Site Url")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "site_url",
-                type: "text",
-                id: "Name",
-                placeholder: "Site Url",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "Site address" } }, [
-              _vm._v("Site Address"),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#social", "data-toggle": "tab" },
+                },
+                [_vm._v("Social Links")]
+              ),
             ]),
             _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "address",
-                type: "text",
-                id: "Name",
-                placeholder: "Site address",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#payment", "data-toggle": "tab" },
+                },
+                [_vm._v("Payment Settings")]
+              ),
+            ]),
             _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "email",
-                type: "text",
-                id: "Name",
-                placeholder: "Email",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "phone" } }, [_vm._v("Phone")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "phone",
-                type: "number",
-                id: "Name",
-                placeholder: "Phone",
-              },
-            }),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { href: "#Timing", "data-toggle": "tab" },
+                },
+                [_vm._v("Office Timing")]
+              ),
+            ]),
           ]),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "Facebook" } }, [_vm._v("Facebook")]),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "tab-content" }, [
+            _c(
+              "div",
+              { staticClass: "tab-pane active", attrs: { id: "general" } },
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "Site Logo" } }, [
+                    _vm._v("Site Logo"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "site_logo",
+                      type: "file",
+                      id: "Name",
+                      placeholder: "Site Logo",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "Site title" } }, [
+                    _vm._v("Site Title"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "site_title",
+                      type: "text",
+                      id: "Name",
+                      placeholder: "Site Title",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "video" } }, [_vm._v("Video")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "video",
+                      type: "file",
+                      id: "Name",
+                      placeholder: "Video",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "Site url" } }, [
+                    _vm._v("Site Url"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "site_url",
+                      type: "text",
+                      id: "Name",
+                      placeholder: "Site Url",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "Site address" } }, [
+                    _vm._v("Site Address"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "address",
+                      type: "text",
+                      id: "Name",
+                      placeholder: "Site address",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "email",
+                      type: "text",
+                      id: "Name",
+                      placeholder: "Email",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "phone" } }, [_vm._v("Phone")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "phone",
+                      type: "tel",
+                      id: "Name",
+                      placeholder: "Phone",
+                    },
+                  }),
+                ]),
+              ]
+            ),
             _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "facebook",
-                type: "text",
-                id: "Name",
-                placeholder: "Facebook",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "Twitter" } }, [_vm._v("Twitter")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "twitter",
-                type: "text",
-                id: "Name",
-                placeholder: "Twitter",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "google" } }, [_vm._v("Google")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "google",
-                type: "text",
-                id: "Name",
-                placeholder: "google",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "video" } }, [_vm._v("Video")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "video",
-                type: "file",
-                id: "Name",
-                placeholder: "Video",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "days" } }, [_vm._v("Day of Week")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { name: "dow", type: "text", id: "Name" },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "start_time" } }, [
-              _vm._v("Start time"),
+            _c("div", { staticClass: "tab-pane", attrs: { id: "social" } }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "Facebook" } }, [
+                  _vm._v("Facebook"),
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "facebook",
+                    type: "text",
+                    id: "Name",
+                    placeholder: "Facebook",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "Twitter" } }, [_vm._v("Twitter")]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "twitter",
+                    type: "text",
+                    id: "Name",
+                    placeholder: "Twitter",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "google" } }, [_vm._v("Google")]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "google",
+                    type: "text",
+                    id: "Name",
+                    placeholder: "google",
+                  },
+                }),
+              ]),
             ]),
             _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { name: "start_time", type: "text", id: "Name" },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "start_time" } }, [
-              _vm._v("Close time"),
+            _c("div", { staticClass: "tab-pane", attrs: { id: "payment" } }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "Site url" } }, [
+                  _vm._v("Paypal Api Key"),
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "Paypal-key",
+                    type: "text",
+                    id: "Name",
+                    placeholder: "Paypal key",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "Site url" } }, [
+                  _vm._v("Stripe Key"),
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "stirpe-key",
+                    type: "text",
+                    id: "Name",
+                    placeholder: "stripe key",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "Site url" } }, [
+                  _vm._v("Stripe Secret Key"),
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "stirpe-secret-key",
+                    type: "text",
+                    id: "Name",
+                    placeholder: "Stripe Secret Key",
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "Site url" } }, [
+                  _vm._v("Select Payment Method"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "custom-control custom-switch" }, [
+                  _c("input", {
+                    staticClass: "custom-control-input",
+                    attrs: {
+                      type: "checkbox",
+                      name: "payment-mt",
+                      value: "paypal",
+                      id: "customSwitch1",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-control-label",
+                      attrs: { for: "customSwitch1" },
+                    },
+                    [_vm._v("Paypal")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "custom-control custom-switch" }, [
+                  _c("input", {
+                    staticClass: "custom-control-input",
+                    attrs: {
+                      type: "checkbox",
+                      name: "payment-mt",
+                      value: "stripe",
+                      id: "customSwitch2",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-control-label",
+                      attrs: { for: "customSwitch2" },
+                    },
+                    [_vm._v("Stripe")]
+                  ),
+                ]),
+              ]),
             ]),
             _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { name: "close_time", type: "text", id: "Name" },
-            }),
+            _c("div", { staticClass: "tab-pane", attrs: { id: "Timing" } }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "days" } }, [
+                  _vm._v("Day of Week"),
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { name: "dow", type: "text", id: "Name" },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "start_time" } }, [
+                  _vm._v("Start time"),
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { name: "start_time", type: "text", id: "Name" },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "start_time" } }, [
+                  _vm._v("Close time"),
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { name: "close_time", type: "text", id: "Name" },
+                }),
+              ]),
+            ]),
           ]),
         ]),
       ]),
@@ -66632,7 +66881,7 @@ var staticRenderFns = [
           staticClass: "btn btn-primary",
           attrs: { name: "submit", type: "submit" },
         },
-        [_vm._v("\n            Submit\n            ")]
+        [_vm._v("\n        Submit\n      ")]
       ),
     ])
   },

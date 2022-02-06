@@ -14,11 +14,13 @@ class CreateSettingsTable extends Migration
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->id();
             $table->string('site_title')->nullable();
             $table->string('site_logo')->nullable();
             $table->string('logo_path')->nullable();
             $table->string('site_url')->nullable();
+            $table->string('Paypal-key')->nullable();
+            $table->string('stirpe-key')->nullable();
+            $table->string('stirpe-secret-key')->nullable();
             $table->string('address')->nullable();
             $table->string('email')->nullable();
             $table->bigInteger('phone')->nullable();
@@ -28,6 +30,7 @@ class CreateSettingsTable extends Migration
             $table->string('video_name')->nullable();
             $table->string('video_path')->nullable();
             $table->string('dow')->nullable();
+            $table->enum('Payment-mt', ['Stripe', 'Paypal'])->default('Stripe');
             $table->enum('status', ['opened', 'closed'])->default('opened');
             $table->string('start_time')->nullable();
             $table->string('close_time')->nullable();

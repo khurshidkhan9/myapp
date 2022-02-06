@@ -22,9 +22,10 @@ class ActivityByUser
     {
         if (Auth::check()) {
             $expiresAt = Carbon::now()->addMinutes(1); // keep online for 1 min
+            $current_date_time = Carbon::now()->toDateTimeString(); 
             Cache::put('user-is-online-' . Auth::user()->id, true, $expiresAt);
             // last seen
-            User::where('id', Auth::user()->id)->update(['last_seen' => (new \DateTime())->format("Y-m-d H:i:s")]);
+            User::where('id', Auth::user()->id)->update(['last_seen' => $current_date_time]);
         }
         return $next($request);
     }

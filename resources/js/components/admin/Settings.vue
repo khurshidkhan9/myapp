@@ -1,24 +1,45 @@
 
 
 <template>
-   <div class="col-md-12">
-      <!-- general form elements -->
-      <div class="card card-primary">
-         <div class="card-header">
-            <h3 class="card-title">Settings</h3>
-         </div>
-         <!-- /.card-header -->
-         <!-- form start -->
-         <form
-            class="myform"
-            @submit.prevent="Addsettings"
-            id="myForm"
-            enctype="multipart/form-data"
-            >
-            <div class="card-body">
-               <div class="row">
-                  <div class="col-md-6">
-                     <div class="form-group">
+  <div class="col-md-12">
+    <!-- form start -->
+    <form
+      class="myform"
+      @submit.prevent="Addsettings"
+      id="myForm"
+      enctype="multipart/form-data"
+    >
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header p-2">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link" href="#general" data-toggle="tab"
+                  >General Settings</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#social" data-toggle="tab"
+                  >Social Links</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#payment" data-toggle="tab"
+                  >Payment Settings</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#Timing" data-toggle="tab"
+                  >Office Timing</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="general">
+                  <div class="form-group">
                         <label for="Site Logo">Site Logo</label>
                         <input
                            name="site_logo"
@@ -36,6 +57,16 @@
                            class="form-control"
                            id="Name"
                            placeholder="Site Title"
+                           />
+                     </div>
+                     <div class="form-group">
+                        <label for="video">Video</label>
+                        <input
+                           name="video"
+                           type="file"
+                           class="form-control"
+                           id="Name"
+                           placeholder="Video"
                            />
                      </div>
                      <div class="form-group">
@@ -72,15 +103,16 @@
                         <label for="phone">Phone</label>
                         <input
                            name="phone"
-                           type="number"
+                           type="tel"
                            class="form-control"
                            id="Name"
                            placeholder="Phone"
                            />
                      </div>
-                  </div>
-                  <div class="col-md-6">
-                     <div class="form-group">
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="social">
+                 <div class="form-group">
                         <label for="Facebook">Facebook</label>
                         <input
                            name="facebook"
@@ -110,17 +142,57 @@
                            placeholder="google"
                            />
                      </div>
-                     <div class="form-group">
-                        <label for="video">Video</label>
+              </div>
+              <!-- /.tab-pane -->
+
+              <div class="tab-pane" id="payment">
+                 <div class="form-group">
+                        <label for="Site url">Paypal Api Key</label>
                         <input
-                           name="video"
-                           type="file"
+                           name="Paypal-key"
+                           type="text"
                            class="form-control"
                            id="Name"
-                           placeholder="Video"
+                           placeholder="Paypal key"
                            />
                      </div>
                      <div class="form-group">
+                        <label for="Site url">Stripe Key</label>
+                        <input
+                           name="stirpe-key"
+                           type="text"
+                           class="form-control"
+                           id="Name"
+                           placeholder="stripe key"
+                           />
+                     </div>
+                     <div class="form-group">
+                        <label for="Site url">Stripe Secret Key</label>
+                        <input
+                           name="stirpe-secret-key"
+                           type="text"
+                           class="form-control"
+                           id="Name"
+                           placeholder="Stripe Secret Key"
+                           />
+                     </div>
+                     <div class="form-group">
+                        <label for="Site url">Select Payment Method</label>
+                         <div class="custom-control custom-switch">
+                         <input type="checkbox" class="custom-control-input" name="payment-mt" value="paypal" id="customSwitch1">
+                         <label class="custom-control-label" for="customSwitch1">Paypal</label>
+                    </div>
+                         <div class="custom-control custom-switch">
+                         <input type="checkbox" class="custom-control-input" name="payment-mt" value="stripe" id="customSwitch2">
+                         <label class="custom-control-label" for="customSwitch2">Stripe</label>
+                    </div>
+
+                  
+                     </div>
+              </div>
+
+              <div class="tab-pane" id="Timing">
+               <div class="form-group">
                         <label for="days">Day of Week</label>
                         <input name="dow" type="text" class="form-control" id="Name" />
                      </div>
@@ -142,44 +214,48 @@
                            id="Name"
                            />
                      </div>
-                  </div>
-               </div>
+              </div>
+              <!-- /.tab-content -->
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-               <button name="submit" type="submit" class="btn btn-primary">
-               Submit
-               </button>
-            </div>
-         </form>
+          </div>
+          <!-- /.card -->
+        </div>
       </div>
-   </div>
+
+      <!-- /.card-body -->
+      <div class="card-footer">
+        <button name="submit" type="submit" class="btn btn-primary">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
 </template>
 <script>
-   export default {
-        data(){
-          return {
-            settings : [],
-          }
-        },
+export default {
+  data() {
+    return {
+      settings: [],
+    };
+  },
 
-        methods : { 
-          Addsettings() {
-            var formData = new FormData(document.getElementById("myForm"));
-            let instance = this;
-            axios.post("admin/settings", formData)
-            .then(function (response) {
-                console.log(formData);
-                instance.$router.push("/settings");
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-          }
-        }
-
-
-}
+  methods: {
+    Addsettings() {
+      var formData = new FormData(document.getElementById("myForm"));
+      let instance = this;
+      axios
+        .post("admin/settings", formData)
+        .then(function (response) {
+          console.log(formData);
+          instance.$router.push("/settings");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
 <style></style>
 
