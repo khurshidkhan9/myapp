@@ -38,6 +38,10 @@ Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::get('/profile/{id}/edit', [ UsersController::class, 'edit_profile'])->name('editProfile');
 Route::post('/profile/{id}/edit', [ UsersController::class, 'storeImage' ])->name('images.store');
 
+// Stripe payment route 
+Route::get('stripe', [DonationController::class, 'stripe']);
+Route::post('stripe', [DonationController::class, 'stripePost'])->name('stripe.post');
+
 // Paypal Donation Form
 Route::get( 'donation-form',  [ DonationController::class, 'donationForm' ] );
 Route::get( 'donation/success',  [ DonationController::class, 'donationSuccess' ] )->name('donation.success');

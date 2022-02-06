@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Donation;
+use Stripe;
+use Session;
 
 
 class DonationController extends Controller
 {
     public function donationForm( Request $request ){
         $info = [];
-        return view( 'donation.form', $info );
+        // return view( 'donation.form', $info );
+        return view( 'donation.stripe_form', $info );
     }
 
     public function donationSuccess( Request $request ){
@@ -45,5 +48,29 @@ class DonationController extends Controller
         $donation->delete();
 
         return response()->json('donation deleted!');
+    }
+
+
+    // all method for stripe payment
+
+        /**
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function stripePost(Request $request)
+    {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => $request->amount * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "customer" => "cus_L6KW1X9X1sDFB5",
+                "description" => "Test payment from amin education foundation." 
+        ]);
+  
+        Session::flash('success', 'Payment successful!');
+          
+        return back();
     }
 }
